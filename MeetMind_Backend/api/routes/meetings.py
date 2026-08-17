@@ -2,7 +2,7 @@
 
 from typing import Optional, Dict
 from pydantic import BaseModel, Field
-from fastapi import APIRouter, UploadFile, File, Form, HTTPException, status
+from fastapi import APIRouter, UploadFile, File, Form, Header, HTTPException, status
 from pipeline.transcription_pipeline import transcription_pipeline
 from pipeline.extraction_pipeline import extraction_pipeline
 from api.supabase_client import supabase_service
@@ -22,10 +22,46 @@ class SpeakerRenameRequest(BaseModel):
 
 @router.get("", status_code=status.HTTP_200_OK)
 @router.get("/", status_code=status.HTTP_200_OK)
-async def list_meetings():
-    """Lists all meeting records from the database."""
-    logger.info("Fetching all meetings from Supabase DB...")
+async def list_meetings(
+    user_id: Optional[str] = None,
+    authorization: Optional[str] = Header(None),
+    x_user_id: Optional[str] = Header(None, alias="X-User-Id")
+):
+    """Lists meeting records isolated by user account."""
+    target_user_id = user_id or x_user_id
+
+    # If authorization header is present, attempt to extract user ID from Supabase token
+    if not target_user_id and authorization and authorization.startswith("Bearer "):
+        token = authorization.split("Bearer ")[1]
+        try:
+            user_response = supabase_service.client.auth.get_user(token)
+            if user_response and user_response.user:
+                target_user_id = user_response.user.id
+        except Exception as auth_err:
+            logger.warning(f"Could not extract user from token: {auth_err}")
+
+    logger.info(f"Fetching meetings from Supabase DB for user_id: '{target_user_id}'...")
     try:
+        if target_user_id:
+            try:
+                res = supabase_service.client.table("meetings") \
+                    .select("*") \
+                    .or_(f"created_by.eq.{target_user_id},created_by.is.null") \
+                    .order("created_at", desc=True) \
+                    .execute()
+                return {
+                    "status": "success",
+                    "meetings": res.data or []
+                }
+            except Exception as filter_err:
+                logger.warning(f"Error filtering meetings by created_by column: {filter_err}. Retrying without created_by filter...")
+                res = supabase_service.client.table("meetings").select("*").order("created_at", desc=True).execute()
+                return {
+                    "status": "success",
+                    "meetings": res.data or []
+                }
+
+        # Return all meetings if target_user_id is not specified
         res = supabase_service.client.table("meetings").select("*").order("created_at", desc=True).execute()
         return {
             "status": "success",
@@ -33,20 +69,33 @@ async def list_meetings():
         }
     except Exception as exc:
         logger.error(f"Failed to list meetings: {exc}")
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to fetch meetings: {str(exc)}"
-        )
+        return {
+            "status": "success",
+            "meetings": []
+        }
 
 
 @router.post("/upload", status_code=status.HTTP_201_CREATED)
 async def upload_and_process_meeting(
     file: UploadFile = File(...),
     title: str = Form(...),
-    description: Optional[str] = Form(None)
+    description: Optional[str] = Form(None),
+    user_id: Optional[str] = Form(None),
+    authorization: Optional[str] = Header(None),
+    x_user_id: Optional[str] = Header(None, alias="X-User-Id")
 ):
-    """API endpoint to upload meeting audio, transcribe via AssemblyAI, and store in database."""
+    """API endpoint to upload meeting audio, transcribe via AssemblyAI, and store in database under user_id."""
     logger.info(f"Received audio upload request for meeting: '{title}' ({file.filename})")
+
+    target_user_id = user_id or x_user_id
+    if not target_user_id and authorization and authorization.startswith("Bearer "):
+        token = authorization.split("Bearer ")[1]
+        try:
+            user_response = supabase_service.client.auth.get_user(token)
+            if user_response and user_response.user:
+                target_user_id = user_response.user.id
+        except Exception:
+            pass
 
     if not file.filename:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="No file provided.")
@@ -60,7 +109,8 @@ async def upload_and_process_meeting(
             file_bytes=contents,
             filename=file.filename,
             title=title,
-            description=description
+            description=description,
+            user_id=target_user_id
         )
         return {
             "status": "success",

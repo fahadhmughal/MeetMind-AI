@@ -50,6 +50,25 @@ class SupabaseService:
             logger.error(f"Error inserting into table '{table}': {exc}")
             raise exc
 
+    def ensure_user_exists(self, user_id: str, email: Optional[str] = None) -> bool:
+        """Ensures a user record exists in public.users to satisfy foreign key constraints."""
+        if not user_id:
+            return False
+        try:
+            res = self.client.table("users").select("id").eq("id", user_id).execute()
+            if not res.data:
+                user_email = email or f"user_{user_id[:8]}@meetmind.ai"
+                self.client.table("users").insert({
+                    "id": user_id,
+                    "email": user_email,
+                    "full_name": "MeetMind User"
+                }).execute()
+                logger.info(f"Auto-provisioned public.users record for user_id '{user_id}'.")
+            return True
+        except Exception as exc:
+            logger.warning(f"Could not auto-provision public.users record for {user_id}: {exc}")
+            return False
+
     # Storage Helpers
     def upload_audio(self, file_name: str, file_bytes: bytes, content_type: str = "audio/wav") -> str:
         """Uploads an audio file to the private 'meeting-audio' bucket."""

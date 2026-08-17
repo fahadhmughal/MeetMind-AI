@@ -62,10 +62,21 @@ class TranscriptionPipeline:
             "duration_seconds": 0
         }
         if user_id:
+            self.supabase.ensure_user_exists(user_id)
             meeting_data["created_by"] = user_id
 
         logger.info("Inserting initial meeting record into Supabase DB...")
-        meeting_record = self.supabase.insert("meetings", meeting_data)
+        try:
+            meeting_record = self.supabase.insert("meetings", meeting_data)
+        except Exception as insert_err:
+            err_str = str(insert_err).lower()
+            if "meetings_created_by_fkey" in err_str or "foreign key constraint" in err_str or "23503" in err_str:
+                logger.warning(f"Foreign key constraint notice for user '{user_id}'. Retrying meeting insertion without created_by link...")
+                meeting_data.pop("created_by", None)
+                meeting_record = self.supabase.insert("meetings", meeting_data)
+            else:
+                raise insert_err
+
         meeting_id = meeting_record.get("id")
 
         # Step 3: AssemblyAI Transcription

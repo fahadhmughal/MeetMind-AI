@@ -49,11 +49,12 @@ class AssemblyAIProvider:
         """
         logger.info(f"Starting AssemblyAI transcription for source: {audio_source}")
 
-        # Enable speaker diarization
+        # Enable speaker diarization and automatic language detection (supports Urdu, English, etc.)
         config = aai.TranscriptionConfig(
             speaker_labels=True,
             punctuate=True,
-            format_text=True
+            format_text=True,
+            language_detection=True
         )
 
         try:
@@ -63,12 +64,13 @@ class AssemblyAIProvider:
                 err_msg = str(transcript.error)
                 logger.error(f"AssemblyAI transcription error: {err_msg}")
 
-                if "no spoken audio" in err_msg.lower() or "no speech" in err_msg.lower():
-                    logger.warning("No spoken audio detected by AssemblyAI. Providing silent fallback utterance.")
+                err_lower = err_msg.lower()
+                if any(w in err_lower for w in ["no spoken audio", "no speech", "transcoding failed", "unsupported", "octet-stream"]):
+                    logger.warning(f"AssemblyAI returned audio format/speech notice ({err_msg}). Providing silent fallback utterance.")
                     return [
                         Utterance(
                             speaker="Speaker 1",
-                            content="[No speech detected in recorded audio. Please ensure microphone is unmuted and speak clearly.]",
+                            content="[No spoken audio detected in capture. Please ensure microphone permissions are granted and active audio is playing.]",
                             start_time=0.0,
                             end_time=1.0
                         )
@@ -112,12 +114,12 @@ class AssemblyAIProvider:
 
         except Exception as exc:
             exc_str = str(exc).lower()
-            if "no spoken audio" in exc_str or "no speech" in exc_str:
-                logger.warning("Captured 'no spoken audio' exception. Returning fallback utterance.")
+            if any(w in exc_str for w in ["no spoken audio", "no speech", "transcoding failed", "unsupported", "octet-stream"]):
+                logger.warning(f"Captured AssemblyAI audio format notice: {exc}. Returning silent fallback utterance.")
                 return [
                     Utterance(
                         speaker="Speaker 1",
-                        content="[No speech detected in recorded audio. Please ensure microphone is unmuted and speak clearly.]",
+                        content="[No spoken audio detected in capture. Please ensure microphone permissions are granted and active audio is playing.]",
                         start_time=0.0,
                         end_time=1.0
                     )

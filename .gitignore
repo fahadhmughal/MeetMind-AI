@@ -1,0 +1,56 @@
+# Python Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python Bytecode & Caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Vector DB Data & SQLite Databases (DO NOT COMMIT DATABASE DUMPS)
+MeetMind_Backend/vectordb/data/
+vectordb/data/
+*.sqlite3
+*.sqlite3-journal
+*.bin
+
+# Audio Files & Recordings
+MeetMind_Backend/audio/*
+audio/*
+!.gitkeep
+
+# Application Logs
+logs/
+MeetMind_Backend/logs/
+*.log
+
+# Environment & Secrets (NEVER COMMIT API KEYS OR SECRETS)
+.env
+.env.local
+.env.*
+*.env
+!.env.example
+
+# Node Modules & Build Artifacts
+node_modules/
+dist/
+dist-ssr/
+build/
+meetmind_web/node_modules/
+meetmind_web/dist/
+meetmind_extension/node_modules/
+meetmind_extension/dist/
+
+# IDE & OS Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
