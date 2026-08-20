@@ -7,6 +7,10 @@ import { Button } from '../../components/ui/Button'
 import { Input } from '../../components/ui/Input'
 import { MarkdownRenderer } from '../../components/ui/MarkdownRenderer'
 
+import { useToast } from '../../components/ui/Toast'
+
+import { SectionLabel } from '../../components/ui/SectionLabel'
+
 export interface ChatMessage {
   id: string
   sender: 'user' | 'ai'
@@ -15,6 +19,7 @@ export interface ChatMessage {
 }
 
 export const OrgChatPage: React.FC = () => {
+  const toast = useToast()
   const [scope, setScope] = useState<'meeting' | 'organization'>('organization')
   const [targetMeetingId, setTargetMeetingId] = useState('')
   const [query, setQuery] = useState('')
@@ -53,6 +58,7 @@ export const OrgChatPage: React.FC = () => {
 
       setMessages((prev) => [...prev, aiMsg])
     } catch (err: any) {
+      toast.error('Failed to query organization memory bank.')
       const errorMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         sender: 'ai',
@@ -68,11 +74,11 @@ export const OrgChatPage: React.FC = () => {
     <div className="w-full max-w-4xl mx-auto px-4 py-8">
       {/* Header */}
       <div className="mb-6 text-center">
-        <div className="w-10 h-10 rounded-xl bg-[#2563eb1a] border border-[#2563eb33] flex items-center justify-center mx-auto mb-3 text-[#2563eb]">
-          <Sparkles className="w-5 h-5" />
-        </div>
-        <h1 className="text-xl font-bold text-[#fafafa] tracking-tight">AI Assistant Workspace</h1>
-        <p className="text-xs text-[#a1a1aa] mt-1">
+        <SectionLabel icon={<Sparkles className="w-3.5 h-3.5" />} className="mb-3">
+          Vector Memory Search
+        </SectionLabel>
+        <h1 className="text-xl sm:text-2xl font-extrabold text-[#F1F5F9] tracking-tight">AI Assistant Workspace</h1>
+        <p className="text-xs text-[#8B96A5] mt-1 font-medium">
           Perform grounded Q&A across your organization's meeting memory bank.
         </p>
       </div>
@@ -83,8 +89,8 @@ export const OrgChatPage: React.FC = () => {
           onClick={() => setScope('organization')}
           className={`px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 border transition-all cursor-pointer ${
             scope === 'organization'
-              ? 'bg-[#2563eb] border-[#2563eb] text-white'
-              : 'bg-[#18181b] border-[#27272a] text-[#a1a1aa] hover:text-[#fafafa]'
+              ? 'bg-[#22C55E] border-transparent text-[#0B0F14]'
+              : 'bg-[#12171F] border-[#232B36] text-[#8B96A5] hover:text-[#F1F5F9]'
           }`}
         >
           <Globe className="w-3.5 h-3.5" />
@@ -95,8 +101,8 @@ export const OrgChatPage: React.FC = () => {
           onClick={() => setScope('meeting')}
           className={`px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 border transition-all cursor-pointer ${
             scope === 'meeting'
-              ? 'bg-[#2563eb] border-[#2563eb] text-white'
-              : 'bg-[#18181b] border-[#27272a] text-[#a1a1aa] hover:text-[#fafafa]'
+              ? 'bg-[#22C55E] border-transparent text-[#0B0F14]'
+              : 'bg-[#12171F] border-[#232B36] text-[#8B96A5] hover:text-[#F1F5F9]'
           }`}
         >
           <FileText className="w-3.5 h-3.5" />
@@ -115,11 +121,11 @@ export const OrgChatPage: React.FC = () => {
       )}
 
       {/* Chat Window */}
-      <Card className="p-6 h-[550px] flex flex-col justify-between">
+      <Card className="p-6 h-[550px] flex flex-col justify-between border-[#232B36] bg-[#12171F]">
         <div className="overflow-y-auto space-y-4 pr-2 flex-1 mb-4">
           {messages.length === 0 ? (
-            <div className="py-24 text-center text-[#71717a] text-xs">
-              <MessageSquare className="w-8 h-8 text-[#71717a] mx-auto mb-2 opacity-50" />
+            <div className="py-24 text-center text-[#8B96A5] text-xs">
+              <MessageSquare className="w-8 h-8 text-[#232B36] mx-auto mb-2" />
               Ask questions like <i>"What were the action items from last week's product review?"</i>
             </div>
           ) : (
@@ -131,20 +137,20 @@ export const OrgChatPage: React.FC = () => {
                 className={`flex flex-col ${m.sender === 'user' ? 'items-end' : 'items-start'}`}
               >
                 <div
-                  className={`p-3.5 rounded-2xl text-xs max-w-[80%] leading-relaxed ${
+                  className={`p-3.5 rounded-xl text-xs max-w-[80%] leading-relaxed ${
                     m.sender === 'user'
-                      ? 'bg-[#27272a] text-[#fafafa] border border-[#3f3f46] ml-auto rounded-tr-xs shadow-xs'
-                      : 'bg-[#18181b] text-[#fafafa] border border-[#27272a] mr-auto rounded-tl-xs'
+                      ? 'bg-[#22C55E] text-[#0B0F14] font-semibold ml-auto rounded-tr-xs'
+                      : 'bg-[#0B0F14] text-[#F1F5F9] border border-[#232B36] mr-auto rounded-tl-xs'
                   }`}
                 >
                   {m.sender === 'ai' ? (
                     <MarkdownRenderer content={m.text} className="text-xs" />
                   ) : (
-                    <p>{m.text}</p>
+                    <p className="font-medium">{m.text}</p>
                   )}
                   {m.sources && m.sources.length > 0 && (
-                    <div className="mt-3 pt-2 border-t border-[#27272a] text-[10px] text-[#a1a1aa]">
-                      <span className="font-semibold text-[#3b82f6] block mb-1">Sources:</span>
+                    <div className="mt-3 pt-2 border-t border-[#232B36] text-[10px] text-[#8B96A5]">
+                      <span className="font-semibold text-[#22C55E] block mb-1">Sources:</span>
                       {m.sources.map((src, i) => (
                         <span key={i} className="block italic">• {src}</span>
                       ))}
@@ -156,7 +162,7 @@ export const OrgChatPage: React.FC = () => {
           )}
 
           {isSending && (
-            <div className="flex items-center gap-2 text-xs text-[#3b82f6] italic">
+            <div className="flex items-center gap-2 text-xs text-[#22C55E] font-medium italic">
               <Loader2 className="w-4 h-4 animate-spin" />
               <span>Searching vector embeddings and formulating response...</span>
             </div>

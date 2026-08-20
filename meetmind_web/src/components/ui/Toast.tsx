@@ -54,19 +54,19 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 10, scale: 0.95 }}
-              className="pointer-events-auto flex items-center justify-between gap-3 p-3.5 rounded-lg bg-[#18181b] border border-[#27272a] shadow-xl text-xs font-medium text-[#fafafa]"
+              className="pointer-events-auto flex items-center justify-between gap-3 p-3.5 rounded-xl bg-[#12171F] border border-[#232B36] text-xs font-medium text-[#F1F5F9]"
             >
               <div className="flex items-center gap-2.5">
-                {t.type === 'success' && <CheckCircle2 className="w-4 h-4 text-[#22c55e] shrink-0" />}
-                {t.type === 'warning' && <AlertTriangle className="w-4 h-4 text-[#f59e0b] shrink-0" />}
-                {t.type === 'error' && <XCircle className="w-4 h-4 text-[#ef4444] shrink-0" />}
-                {t.type === 'info' && <Info className="w-4 h-4 text-[#3b82f6] shrink-0" />}
+                {t.type === 'success' && <CheckCircle2 className="w-4 h-4 text-[#22C55E] shrink-0" />}
+                {t.type === 'warning' && <AlertTriangle className="w-4 h-4 text-[#F59E0B] shrink-0" />}
+                {t.type === 'error' && <XCircle className="w-4 h-4 text-[#EF4444] shrink-0" />}
+                {t.type === 'info' && <Info className="w-4 h-4 text-[#3B82F6] shrink-0" />}
                 <span className="leading-normal">{t.message}</span>
               </div>
               <button
                 type="button"
                 onClick={() => removeToast(t.id)}
-                className="text-[#71717a] hover:text-[#fafafa] transition-colors p-1 rounded"
+                className="text-[#8B96A5] hover:text-[#F1F5F9] transition-colors p-1 rounded"
               >
                 <X className="w-3.5 h-3.5" />
               </button>
@@ -81,7 +81,12 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 export const useToast = (): ToastContextType['toast'] => {
   const context = useContext(ToastContext)
   if (!context) {
-    throw new Error('useToast must be used within a ToastProvider')
+    return {
+      success: (msg: string) => console.log('[Toast success]:', msg),
+      error: (msg: string) => console.log('[Toast error]:', msg),
+      info: (msg: string) => console.log('[Toast info]:', msg),
+      warning: (msg: string) => console.log('[Toast warning]:', msg),
+    }
   }
   return context.toast
 }

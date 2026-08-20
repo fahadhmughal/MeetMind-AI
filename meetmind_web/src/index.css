@@ -2,54 +2,53 @@
 
 @layer base {
   body {
-    background-color: #09090b;
-    color: #fafafa;
+    background-color: #0B0F14;
+    color: #F1F5F9;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
   }
 }
 
-/* Base custom design tokens */
+/* Central Dark Design Tokens */
 :root {
-  --bg-base: #09090b;
-  --bg-card: #18181b;
-  --bg-hover: #1f1f23;
-  --border-subtle: #27272a;
-  --text-primary: #fafafa;
-  --text-muted: #a1a1aa;
-  --text-tertiary: #71717a;
-  --accent-primary: #2563eb;
-  --accent-hover: #1d4ed8;
+  --bg-base: #0B0F14;
+  --bg-card: #12171F;
+  --bg-elevated: #1A212C;
+  --border-color: #232B36;
+  --text-primary: #F1F5F9;
+  --text-muted: #8B96A5;
+  --accent-primary: #22C55E;
+  --accent-hover: #16A34A;
+  
+  --success-color: #22C55E;
+  --success-bg: rgba(34, 197, 94, 0.10);
+  
+  --warning-color: #F59E0B;
+  --warning-bg: rgba(245, 158, 11, 0.10);
+  
+  --error-color: #EF4444;
+  --error-bg: rgba(239, 68, 68, 0.10);
+  
+  --info-color: #3B82F6;
+  --info-bg: rgba(59, 130, 246, 0.10);
 }
 
-/* Static dot-grid background texture (24px spacing, #27272a dots on #09090b) */
-.bg-dot-grid {
-  background-image: radial-gradient(#27272a 1px, transparent 1px);
-  background-size: 24px 24px;
-}
 
-/* Pure GPU-accelerated ambient glow drift animation (38-second cycle, translate/opacity only) */
+
+/* GPU-accelerated ambient glow drift (restrained 4-6% opacity) */
 @keyframes ambientGlowDrift {
   0% {
     transform: translate(0vw, 0vh) scale(1);
-    opacity: 0.9;
-  }
-  25% {
-    transform: translate(25vw, 15vh) scale(1.08);
-    opacity: 1;
+    opacity: 0.05;
   }
   50% {
-    transform: translate(-10vw, 35vh) scale(0.96);
-    opacity: 0.85;
-  }
-  75% {
-    transform: translate(-20vw, -10vh) scale(1.04);
-    opacity: 0.95;
+    transform: translate(15vw, 15vh) scale(1.05);
+    opacity: 0.06;
   }
   100% {
     transform: translate(0vw, 0vh) scale(1);
-    opacity: 0.9;
+    opacity: 0.05;
   }
 }
 
@@ -58,25 +57,24 @@
   will-change: transform;
 }
 
-/* System reduced motion preference guard */
 @media (prefers-reduced-motion: reduce) {
   .animate-ambient-glow {
     animation: none !important;
   }
 }
 
-/* Scrollbar customization */
+/* Dark Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: #0B0F14;
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: #232B36;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: #8B96A5;
 }

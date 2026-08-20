@@ -8,15 +8,15 @@ export interface BadgeProps {
 export const Badge: React.FC<BadgeProps> = ({ status, className = '' }) => {
   const normalized = status.toLowerCase()
 
-  let style = 'bg-[#1f1f23] text-[#a1a1aa] border-[#27272a]'
-  if (normalized === 'completed' || normalized === 'success') {
-    style = 'bg-[#22c55e1a] text-[#22c55e] border-[#22c55e33]'
-  } else if (normalized === 'processing' || normalized === 'pending' || normalized === 'risk') {
-    style = 'bg-[#f59e0b1a] text-[#f59e0b] border-[#f59e0b33]'
+  let style = 'bg-[#1A212C] text-[#8B96A5] border-[#232B36]'
+  if (normalized === 'completed' || normalized === 'success' || normalized === 'paid') {
+    style = 'bg-[#22C55E1A] text-[#22C55E] border-[#22C55E33]'
+  } else if (normalized === 'processing' || normalized === 'pending' || normalized === 'risk' || normalized === 'in progress') {
+    style = 'bg-[#F59E0B1A] text-[#F59E0B] border-[#F59E0B33]'
   } else if (normalized === 'scheduled' || normalized === 'info') {
-    style = 'bg-[#3b82f61a] text-[#3b82f6] border-[#3b82f633]'
-  } else if (normalized === 'failed' || normalized === 'error') {
-    style = 'bg-[#ef44441a] text-[#ef4444] border-[#ef444433]'
+    style = 'bg-[#3B82F61A] text-[#3B82F6] border-[#3B82F633]'
+  } else if (normalized === 'failed' || normalized === 'error' || normalized === 'high') {
+    style = 'bg-[#EF44441A] text-[#EF4444] border-[#EF444433]'
   }
 
   return (

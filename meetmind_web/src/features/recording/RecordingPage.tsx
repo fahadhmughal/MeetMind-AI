@@ -7,6 +7,8 @@ import { Button } from '../../components/ui/Button'
 import { Card } from '../../components/ui/Card'
 import { Input } from '../../components/ui/Input'
 
+import { useToast } from '../../components/ui/Toast'
+
 export interface RecordingPageProps {
   onRecordingComplete: () => void
   onCancel: () => void
@@ -16,6 +18,7 @@ export const RecordingPage: React.FC<RecordingPageProps> = ({
   onRecordingComplete,
   onCancel,
 }) => {
+  const toast = useToast()
   const [isRecording, setIsRecording] = useState(false)
   const [meetingTitle, setMeetingTitle] = useState('')
   const [recordingSeconds, setRecordingSeconds] = useState(0)
@@ -44,7 +47,7 @@ export const RecordingPage: React.FC<RecordingPageProps> = ({
 
   const startRecording = async () => {
     if (!meetingTitle.trim()) {
-      alert('Please enter a meeting title before starting.')
+      toast.warning('Please enter a meeting title before starting.')
       return
     }
 
@@ -76,6 +79,7 @@ export const RecordingPage: React.FC<RecordingPageProps> = ({
 
       setIsRecording(true)
       setRecordingSeconds(0)
+      toast.info('Recording started...')
 
       timerIntervalRef.current = setInterval(() => {
         setRecordingSeconds((prev) => prev + 1)
@@ -83,7 +87,9 @@ export const RecordingPage: React.FC<RecordingPageProps> = ({
 
     } catch (err: any) {
       console.error('Microphone permission or recording error:', err)
-      setErrorMessage(err.message || 'Microphone access denied or unreadable.')
+      const errStr = err.message || 'Microphone access denied or unreadable.'
+      setErrorMessage(errStr)
+      toast.error(errStr)
     }
   }
 
@@ -95,12 +101,10 @@ export const RecordingPage: React.FC<RecordingPageProps> = ({
     setProcessingState('uploading')
 
     try {
-      // Stop mediaRecorder and wait for onstop / data available
       if (mediaRecorderRef.current.state !== 'inactive') {
         mediaRecorderRef.current.stop()
       }
 
-      // Wait 300ms to allow final chunk to flush
       await new Promise((r) => setTimeout(r, 300))
 
       let chunks = audioChunksRef.current
@@ -117,7 +121,6 @@ export const RecordingPage: React.FC<RecordingPageProps> = ({
 
       setProcessingState('transcribing')
 
-      // Upload to FastAPI Backend
       const result = await uploadMeetingAudio(
         completeBlob,
         meetingTitle,
@@ -128,10 +131,10 @@ export const RecordingPage: React.FC<RecordingPageProps> = ({
         await analyzeMeeting(result.meeting_id).catch(console.error)
       }
 
-      // Clear local IndexedDB backup buffer
       await clearAudioBuffer()
 
       setProcessingState('completed')
+      toast.success('Meeting recorded and processed successfully!')
       setTimeout(() => {
         onRecordingComplete()
       }, 1500)
@@ -139,15 +142,16 @@ export const RecordingPage: React.FC<RecordingPageProps> = ({
     } catch (err: any) {
       console.error('Error uploading recorded audio:', err)
       const rawError = err.message || 'Failed to upload recorded meeting.'
+      let finalMsg = rawError
       if (
         rawError.toLowerCase().includes('no spoken audio') ||
         rawError.toLowerCase().includes('no speech') ||
         rawError.toLowerCase().includes('language_detection')
       ) {
-        setErrorMessage('No spoken speech was detected in this recording. Please make sure your microphone is unmuted and speak clearly during the meeting.')
-      } else {
-        setErrorMessage(rawError)
+        finalMsg = 'No spoken speech was detected in this recording. Please make sure your microphone is unmuted and speak clearly during the meeting.'
       }
+      setErrorMessage(finalMsg)
+      toast.error(finalMsg)
       setProcessingState('error')
     }
   }
@@ -160,14 +164,14 @@ export const RecordingPage: React.FC<RecordingPageProps> = ({
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-8">
-      <Card className="w-full max-w-xl p-8 border-slate-800 shadow-2xl text-center">
+      <Card className="w-full max-w-xl p-8 border-[#232B36] bg-[#12171F] text-center">
         {processingState !== 'idle' ? (
           <div className="py-8 flex flex-col items-center justify-center">
             {processingState === 'uploading' && (
               <>
-                <Loader2 className="w-12 h-12 text-[#2563eb] animate-spin mb-4" />
-                <h3 className="text-xl font-bold text-white">Saving & Uploading Audio</h3>
-                <p className="text-sm text-slate-400 mt-2">
+                <Loader2 className="w-12 h-12 text-[#22C55E] animate-spin mb-4" />
+                <h3 className="text-xl font-extrabold text-[#F1F5F9]">Saving & Uploading Audio</h3>
+                <p className="text-sm text-[#8B96A5] mt-2 font-medium">
                   Assembling buffered audio slices and transmitting to server...
                 </p>
               </>
@@ -175,9 +179,9 @@ export const RecordingPage: React.FC<RecordingPageProps> = ({
 
             {processingState === 'transcribing' && (
               <>
-                <Loader2 className="w-12 h-12 text-amber-400 animate-spin mb-4" />
-                <h3 className="text-xl font-bold text-white">AssemblyAI Speech-to-Text</h3>
-                <p className="text-sm text-slate-400 mt-2">
+                <Loader2 className="w-12 h-12 text-[#F59E0B] animate-spin mb-4" />
+                <h3 className="text-xl font-extrabold text-[#F1F5F9]">AssemblyAI Speech-to-Text</h3>
+                <p className="text-sm text-[#8B96A5] mt-2 font-medium">
                   Diarizing speakers and generating timestamped timeline...
                 </p>
               </>
@@ -185,9 +189,9 @@ export const RecordingPage: React.FC<RecordingPageProps> = ({
 
             {processingState === 'completed' && (
               <>
-                <CheckCircle2 className="w-12 h-12 text-emerald-400 mb-4 animate-bounce" />
-                <h3 className="text-xl font-bold text-white">Processing Complete!</h3>
-                <p className="text-sm text-slate-400 mt-2">
+                <CheckCircle2 className="w-12 h-12 text-[#22C55E] mb-4 animate-bounce" />
+                <h3 className="text-xl font-extrabold text-[#F1F5F9]">Processing Complete!</h3>
+                <p className="text-sm text-[#8B96A5] mt-2 font-medium">
                   Meeting transcript and insights are ready. Redirecting to workspace...
                 </p>
               </>
@@ -195,9 +199,9 @@ export const RecordingPage: React.FC<RecordingPageProps> = ({
 
             {processingState === 'error' && (
               <>
-                <AlertCircle className="w-12 h-12 text-rose-400 mb-4" />
-                <h3 className="text-xl font-bold text-white">Upload Failed</h3>
-                <p className="text-sm text-rose-300 mt-2 mb-6">{errorMessage}</p>
+                <AlertCircle className="w-12 h-12 text-[#EF4444] mb-4" />
+                <h3 className="text-xl font-extrabold text-[#F1F5F9]">Upload Failed</h3>
+                <p className="text-sm text-[#EF4444] mt-2 mb-6 font-medium">{errorMessage}</p>
                 <Button variant="primary" size="md" onClick={() => setProcessingState('idle')}>
                   Try Again
                 </Button>
@@ -206,13 +210,13 @@ export const RecordingPage: React.FC<RecordingPageProps> = ({
           </div>
         ) : (
           <div>
-            <div className="flex items-center justify-center gap-2 text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full w-fit mx-auto mb-6">
-              <ShieldCheck className="w-4 h-4" />
+            <div className="flex items-center justify-center gap-2 text-xs font-semibold text-[#22C55E] bg-[#22C55E1A] border border-[#22C55E33] px-3 py-1 rounded-full w-fit mx-auto mb-6">
+              <ShieldCheck className="w-4 h-4 text-[#22C55E]" />
               <span>Crash Resilience Active (IndexedDB Buffer)</span>
             </div>
 
-            <h2 className="text-2xl font-extrabold text-white mb-2">Live Meeting Capture</h2>
-            <p className="text-sm text-slate-400 mb-8">
+            <h2 className="text-2xl font-extrabold text-[#F1F5F9] mb-2">Live Meeting Capture</h2>
+            <p className="text-sm text-[#8B96A5] mb-8 font-normal">
               Record microphone audio. Audio is automatically saved locally every 5 seconds.
             </p>
 
@@ -249,17 +253,17 @@ export const RecordingPage: React.FC<RecordingPageProps> = ({
                         delay: i * 0.08,
                         ease: 'easeInOut',
                       }}
-                      className="w-2 bg-[#2563eb] rounded-full"
+                      className="w-2 bg-[#22C55E] rounded-full"
                     />
                   ))}
                 </div>
 
-                <div className="text-3xl font-mono font-bold text-white tracking-wider">
+                <div className="text-3xl font-mono font-bold text-[#F1F5F9] tracking-wider">
                   {formatTimer(recordingSeconds)}
                 </div>
 
-                <p className="text-xs text-slate-400">
-                  Recording live audio for <span className="font-semibold text-slate-200">{meetingTitle}</span>...
+                <p className="text-xs text-[#8B96A5] font-medium">
+                  Recording live audio for <span className="font-semibold text-[#F1F5F9]">{meetingTitle}</span>...
                 </p>
 
                 <Button variant="danger" size="lg" onClick={stopRecordingAndUpload}>

@@ -8,7 +8,7 @@ from api.supabase_client import supabase_service
 from models.providers.assemblyai_provider import AssemblyAIProvider, Utterance
 from pipeline.ingestion.audio_processor import AudioProcessor, AudioValidationError
 from utils.logger import get_logger
-from utils.text_cleaner import strip_devanagari
+from utils.text_cleaner import normalize_to_roman_urdu, strip_devanagari
 
 logger = get_logger(__name__)
 
@@ -106,7 +106,7 @@ class TranscriptionPipeline:
                 })
 
             for u in utterances:
-                clean_content = strip_devanagari(u.content) or u.content
+                clean_content = normalize_to_roman_urdu(u.content)
                 self.supabase.insert("transcripts", {
                     "meeting_id": meeting_id,
                     "speaker": u.speaker,

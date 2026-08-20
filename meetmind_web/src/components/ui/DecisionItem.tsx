@@ -15,12 +15,14 @@ export const DecisionItem: React.FC<DecisionItemProps> = ({
 }) => {
   return (
     <div
-      className={`p-4 rounded-xl bg-[#18181b] border border-[#27272a] hover:border-[#22c55e33] transition-all shadow-sm flex items-start gap-3 mb-3 last:mb-0 ${className}`}
+      className={`p-4 rounded-xl bg-[#12171F] border border-[#232B36] hover:border-[#22C55E]/50 transition-all flex items-start gap-3 mb-3 last:mb-0 ${className}`}
     >
-      <CheckCircle2 className="w-4 h-4 text-[#22c55e] shrink-0 mt-0.5" />
+      <div className="w-5 h-5 rounded bg-[#22C55E1A] text-[#22C55E] flex items-center justify-center shrink-0 mt-0.5 border border-[#22C55E33]">
+        <CheckCircle2 className="w-3.5 h-3.5" />
+      </div>
       <div className="flex-1">
-        <p className="text-xs font-semibold text-[#fafafa] leading-snug">{decisionText}</p>
-        {context && <p className="text-xs text-[#a1a1aa] mt-1 leading-relaxed">{context}</p>}
+        <p className="text-xs font-semibold text-[#F1F5F9] leading-snug">{decisionText}</p>
+        {context && <p className="text-xs text-[#8B96A5] mt-1 leading-relaxed">{context}</p>}
       </div>
     </div>
   )

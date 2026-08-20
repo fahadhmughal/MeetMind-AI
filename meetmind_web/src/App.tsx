@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from './services/supabase'
 import { Navbar } from './components/Navbar'
+import { LandingPage } from './features/landing/LandingPage'
 import { AuthPage } from './features/auth/AuthPage'
 import { MeetingListPage } from './features/meetings/MeetingListPage'
 import { RecordingPage } from './features/recording/RecordingPage'
@@ -10,7 +11,9 @@ import { ToastProvider } from './components/ui/Toast'
 import { BackgroundAnimation } from './components/ui/BackgroundAnimation'
 
 export function App() {
-  const [currentView, setCurrentView] = useState<'dashboard' | 'recording' | 'detail' | 'org_chat' | 'auth'>('auth')
+  const [currentView, setCurrentView] = useState<
+    'landing' | 'dashboard' | 'recording' | 'detail' | 'org_chat' | 'auth'
+  >('landing')
   const [selectedMeetingId, setSelectedMeetingId] = useState<string | null>(null)
   const [userEmail, setUserEmail] = useState<string | null>(null)
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
@@ -23,12 +26,11 @@ export function App() {
       if (user && (user.email_confirmed_at || user.confirmed_at)) {
         setUserEmail(user.email || null)
         setIsAuthenticated(true)
-        setCurrentView('dashboard')
       } else {
         setUserEmail(null)
         setIsAuthenticated(false)
-        setCurrentView('auth')
       }
+      setCurrentView('landing')
       setLoadingSession(false)
     })
 
@@ -41,7 +43,6 @@ export function App() {
       } else {
         setUserEmail(null)
         setIsAuthenticated(false)
-        setCurrentView('auth')
       }
     })
 
@@ -54,7 +55,7 @@ export function App() {
     await supabase.auth.signOut()
     setUserEmail(null)
     setIsAuthenticated(false)
-    setCurrentView('auth')
+    setCurrentView('landing')
   }
 
   const handleAuthSuccess = (email: string) => {
@@ -65,9 +66,9 @@ export function App() {
 
   if (loadingSession) {
     return (
-      <div className="min-h-screen bg-[#09090b] flex items-center justify-center text-[#a1a1aa] font-sans">
+      <div className="min-h-screen bg-[#0B0F14] flex items-center justify-center text-[#8B96A5] font-sans">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-6 h-6 border-2 border-[#2563eb] border-t-transparent rounded-full animate-spin" />
+          <div className="w-6 h-6 border-2 border-[#22C55E] border-t-transparent rounded-full animate-spin" />
           <p className="text-xs font-medium">Loading MeetMind AI...</p>
         </div>
       </div>
@@ -76,11 +77,21 @@ export function App() {
 
   return (
     <ToastProvider>
-      <div className="min-h-screen bg-[#09090b] text-[#fafafa] flex flex-col font-sans selection:bg-[#2563eb] selection:text-white relative overflow-x-hidden">
+      <div className="min-h-screen bg-[#0B0F14] text-[#F1F5F9] flex flex-col font-sans selection:bg-[#22C55E] selection:text-[#0B0F14] relative overflow-x-hidden">
         <BackgroundAnimation />
         <Navbar
-          currentView={currentView === 'detail' || currentView === 'org_chat' ? 'dashboard' : currentView}
+          currentView={
+            currentView === 'detail' || currentView === 'org_chat'
+              ? 'dashboard'
+              : currentView === 'landing'
+              ? 'landing'
+              : currentView
+          }
           onNavigate={(view) => {
+            if (view === 'landing') {
+              setCurrentView(isAuthenticated ? 'dashboard' : 'landing')
+              return
+            }
             if (!isAuthenticated && view !== 'auth') {
               setCurrentView('auth')
               return
@@ -92,7 +103,13 @@ export function App() {
         />
 
         <main className="flex-1 relative z-10">
-          {!isAuthenticated || currentView === 'auth' ? (
+          {currentView === 'landing' ? (
+            <LandingPage
+              isAuthenticated={isAuthenticated}
+              onNavigateAuth={() => setCurrentView(isAuthenticated ? 'dashboard' : 'auth')}
+              onNavigateDashboard={() => setCurrentView('dashboard')}
+            />
+          ) : !isAuthenticated || currentView === 'auth' ? (
             <AuthPage onAuthSuccess={handleAuthSuccess} />
           ) : (
             <>

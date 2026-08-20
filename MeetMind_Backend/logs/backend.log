@@ -11809,3 +11809,734 @@ tasks.5.title
 [2026-08-17 11:46:44] [INFO] [vectordb.chroma_store:23] - Initializing Persistent ChromaDB client at 'D:\Projects\MeetMind\MeetMind_Backend\vectordb\data'
 [2026-08-17 11:46:45] [INFO] [watchfiles.main:309] - 1 change detected
 [2026-08-17 11:46:45] [INFO] [vectordb.chroma_store:32] - Chroma collection 'meetmind_transcripts' ready. Count: 6
+[2026-08-17 11:46:45] [INFO] [main:19] - ============================================================
+[2026-08-17 11:46:45] [INFO] [main:20] -  MeetMind AI Backend Server is Running Successfully!
+[2026-08-17 11:46:45] [INFO] [main:21] -  Server URL:           http://localhost:8000
+[2026-08-17 11:46:45] [INFO] [main:22] -  Interactive API Docs: http://localhost:8000/docs
+[2026-08-17 11:46:45] [INFO] [watchfiles.main:309] - 8 changes detected
+[2026-08-17 11:46:45] [INFO] [main:23] -  Health Check:         http://localhost:8000/api/v1/health
+[2026-08-17 11:46:45] [INFO] [main:24] - ============================================================
+[2026-08-17 11:48:30] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'None'...
+[2026-08-17 11:48:30] [INFO] [api.supabase_client:28] - Supabase admin client initialized successfully.
+[2026-08-17 11:48:38] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 11:49:17] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 11:49:19] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 11:51:34] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 11:51:35] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 11:51:35] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 11:51:35] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 11:51:45] [INFO] [api.routes.meetings:233] - Received delete request for meeting ID: 'fa25a9b3-3357-4242-84fd-948002ae373c'
+[2026-08-17 11:51:45] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?meeting_id=eq.fa25a9b3-3357-4242-84fd-948002ae373c "HTTP/2 200 OK"
+[2026-08-17 11:51:46] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?meeting_id=eq.fa25a9b3-3357-4242-84fd-948002ae373c "HTTP/2 200 OK"
+[2026-08-17 11:51:46] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?meeting_id=eq.fa25a9b3-3357-4242-84fd-948002ae373c "HTTP/2 200 OK"
+[2026-08-17 11:51:46] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?meeting_id=eq.fa25a9b3-3357-4242-84fd-948002ae373c "HTTP/2 200 OK"
+[2026-08-17 11:51:47] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/participants?meeting_id=eq.fa25a9b3-3357-4242-84fd-948002ae373c "HTTP/2 200 OK"
+[2026-08-17 11:51:47] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?id=eq.fa25a9b3-3357-4242-84fd-948002ae373c "HTTP/2 200 OK"
+[2026-08-17 11:51:47] [INFO] [api.routes.meetings:246] - Successfully deleted meeting record 'fa25a9b3-3357-4242-84fd-948002ae373c' and related sub-entities.
+[2026-08-17 11:51:47] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 11:51:47] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 11:51:51] [INFO] [api.routes.meetings:233] - Received delete request for meeting ID: '44231dad-9d5f-444a-aed9-51f8e0b394e6'
+[2026-08-17 11:51:51] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?meeting_id=eq.44231dad-9d5f-444a-aed9-51f8e0b394e6 "HTTP/2 200 OK"
+[2026-08-17 11:51:51] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?meeting_id=eq.44231dad-9d5f-444a-aed9-51f8e0b394e6 "HTTP/2 200 OK"
+[2026-08-17 11:51:51] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?meeting_id=eq.44231dad-9d5f-444a-aed9-51f8e0b394e6 "HTTP/2 200 OK"
+[2026-08-17 11:51:52] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?meeting_id=eq.44231dad-9d5f-444a-aed9-51f8e0b394e6 "HTTP/2 200 OK"
+[2026-08-17 11:51:52] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/participants?meeting_id=eq.44231dad-9d5f-444a-aed9-51f8e0b394e6 "HTTP/2 200 OK"
+[2026-08-17 11:51:52] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?id=eq.44231dad-9d5f-444a-aed9-51f8e0b394e6 "HTTP/2 200 OK"
+[2026-08-17 11:51:52] [INFO] [api.routes.meetings:246] - Successfully deleted meeting record '44231dad-9d5f-444a-aed9-51f8e0b394e6' and related sub-entities.
+[2026-08-17 11:51:52] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 11:51:53] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 11:51:56] [INFO] [api.routes.meetings:233] - Received delete request for meeting ID: 'fab4abd3-99e1-4332-84ce-d2d1497fded3'
+[2026-08-17 11:51:57] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?meeting_id=eq.fab4abd3-99e1-4332-84ce-d2d1497fded3 "HTTP/2 200 OK"
+[2026-08-17 11:51:57] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?meeting_id=eq.fab4abd3-99e1-4332-84ce-d2d1497fded3 "HTTP/2 200 OK"
+[2026-08-17 11:51:57] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?meeting_id=eq.fab4abd3-99e1-4332-84ce-d2d1497fded3 "HTTP/2 200 OK"
+[2026-08-17 11:51:58] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?meeting_id=eq.fab4abd3-99e1-4332-84ce-d2d1497fded3 "HTTP/2 200 OK"
+[2026-08-17 11:51:58] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/participants?meeting_id=eq.fab4abd3-99e1-4332-84ce-d2d1497fded3 "HTTP/2 200 OK"
+[2026-08-17 11:51:58] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?id=eq.fab4abd3-99e1-4332-84ce-d2d1497fded3 "HTTP/2 200 OK"
+[2026-08-17 11:51:58] [INFO] [api.routes.meetings:246] - Successfully deleted meeting record 'fab4abd3-99e1-4332-84ce-d2d1497fded3' and related sub-entities.
+[2026-08-17 11:51:58] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 11:51:58] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 11:52:02] [INFO] [api.routes.meetings:233] - Received delete request for meeting ID: '69e8b49b-95b2-418b-b3cd-433230b4d9ba'
+[2026-08-17 11:52:03] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?meeting_id=eq.69e8b49b-95b2-418b-b3cd-433230b4d9ba "HTTP/2 200 OK"
+[2026-08-17 11:52:03] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?meeting_id=eq.69e8b49b-95b2-418b-b3cd-433230b4d9ba "HTTP/2 200 OK"
+[2026-08-17 11:52:03] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?meeting_id=eq.69e8b49b-95b2-418b-b3cd-433230b4d9ba "HTTP/2 200 OK"
+[2026-08-17 11:52:04] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?meeting_id=eq.69e8b49b-95b2-418b-b3cd-433230b4d9ba "HTTP/2 200 OK"
+[2026-08-17 11:52:04] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/participants?meeting_id=eq.69e8b49b-95b2-418b-b3cd-433230b4d9ba "HTTP/2 200 OK"
+[2026-08-17 11:52:04] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?id=eq.69e8b49b-95b2-418b-b3cd-433230b4d9ba "HTTP/2 200 OK"
+[2026-08-17 11:52:04] [INFO] [api.routes.meetings:246] - Successfully deleted meeting record '69e8b49b-95b2-418b-b3cd-433230b4d9ba' and related sub-entities.
+[2026-08-17 11:52:04] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 11:52:04] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 11:53:12] [INFO] [api.routes.meetings:88] - Received audio upload request for meeting: 'Google Meet Sync 2' (extension_meeting.wav)
+[2026-08-17 11:53:12] [INFO] [pipeline.transcription_pipeline:40] - Starting Transcription Pipeline for meeting 'Google Meet Sync 2' (file: extension_meeting.wav)
+[2026-08-17 11:53:12] [INFO] [pipeline.ingestion.audio_processor:40] - Audio file 'extension_meeting.wav' (558071 bytes) validated successfully.
+[2026-08-17 11:53:12] [INFO] [pipeline.transcription_pipeline:47] - Uploading audio file to Supabase Storage as '6ced8bab-2f1d-4733-a342-d49b85a4748c_extension_meeting.wav'...
+[2026-08-17 11:53:14] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/storage/v1/object/meeting-audio/6ced8bab-2f1d-4733-a342-d49b85a4748c_extension_meeting.wav "HTTP/2 200 OK"
+[2026-08-17 11:53:14] [INFO] [api.supabase_client:81] - Audio file '6ced8bab-2f1d-4733-a342-d49b85a4748c_extension_meeting.wav' uploaded successfully to bucket 'meeting-audio'.
+[2026-08-17 11:53:15] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/storage/v1/object/sign/meeting-audio/6ced8bab-2f1d-4733-a342-d49b85a4748c_extension_meeting.wav "HTTP/2 200 OK"
+[2026-08-17 11:53:15] [INFO] [pipeline.transcription_pipeline:68] - Inserting initial meeting record into Supabase DB...
+[2026-08-17 11:53:15] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings "HTTP/2 201 Created"
+[2026-08-17 11:53:15] [INFO] [models.providers.assemblyai_provider:50] - Starting AssemblyAI transcription for source: C:\Users\dearf\AppData\Local\Temp\tmp_570yl29.wav
+[2026-08-17 11:53:19] [INFO] [httpx:1025] - HTTP Request: POST https://api.assemblyai.com/v2/upload "HTTP/1.1 200 OK"
+[2026-08-17 11:53:20] [INFO] [httpx:1025] - HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+[2026-08-17 11:53:20] [INFO] [httpx:1025] - HTTP Request: GET https://api.assemblyai.com/v2/transcript/3f031a58-cb33-4781-a9c2-cfbbb692d686 "HTTP/1.1 200 OK"
+[2026-08-17 11:53:23] [INFO] [httpx:1025] - HTTP Request: GET https://api.assemblyai.com/v2/transcript/3f031a58-cb33-4781-a9c2-cfbbb692d686 "HTTP/1.1 200 OK"
+[2026-08-17 11:53:27] [INFO] [httpx:1025] - HTTP Request: GET https://api.assemblyai.com/v2/transcript/3f031a58-cb33-4781-a9c2-cfbbb692d686 "HTTP/1.1 200 OK"
+[2026-08-17 11:53:27] [INFO] [models.providers.assemblyai_provider:112] - AssemblyAI transcription complete. Extracted 1 utterances.
+[2026-08-17 11:53:27] [INFO] [pipeline.transcription_pipeline:99] - Extracting 1 participants: ['Speaker A']
+[2026-08-17 11:53:27] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/participants "HTTP/2 201 Created"
+[2026-08-17 11:53:29] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts "HTTP/2 201 Created"
+[2026-08-17 11:53:29] [INFO] [httpx:1025] - HTTP Request: PATCH https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 11:53:29] [INFO] [pipeline.transcription_pipeline:124] - Transcription Pipeline completed successfully for meeting ID: 95a91c69-2c88-4a3d-b7df-37b77b00d047
+[2026-08-17 11:53:29] [INFO] [api.routes.meetings:210] - Received analysis request for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 11:53:29] [INFO] [pipeline.extraction_pipeline:35] - Starting LLM Extraction Pipeline for meeting ID: 95a91c69-2c88-4a3d-b7df-37b77b00d047
+[2026-08-17 11:53:29] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&limit=100 "HTTP/2 200 OK"
+[2026-08-17 11:53:30] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 11:53:30] [INFO] [pipeline.extraction_pipeline:53] - Formatted transcript context (466 chars) for meeting 95a91c69-2c88-4a3d-b7df-37b77b00d047
+[2026-08-17 11:53:30] [INFO] [pipeline.extraction_pipeline:59] - Extracting Executive Summary...
+[2026-08-17 11:53:30] [INFO] [key_manager:131] - Using [GEMINI Key #1]
+[2026-08-17 11:53:30] [INFO] [models.llm_factory:40] - Calling LLM provider 'gemini' with model 'gemini-3.5-flash-lite'
+[2026-08-17 11:53:30] [INFO] [google_genai.models:6586] - AFC is enabled with max remote calls: 10.
+[2026-08-17 11:53:31] [INFO] [httpx:1025] - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+[2026-08-17 11:53:31] [INFO] [models.llm_factory:190] - Successfully parsed LLM response into schema 'ExecutiveSummary'
+[2026-08-17 11:53:31] [INFO] [pipeline.extraction_pipeline:73] - Extracting Action Items / Tasks...
+[2026-08-17 11:53:31] [INFO] [key_manager:131] - Using [GEMINI Key #1]
+[2026-08-17 11:53:31] [INFO] [models.llm_factory:40] - Calling LLM provider 'gemini' with model 'gemini-3.5-flash-lite'
+[2026-08-17 11:53:31] [INFO] [google_genai.models:6586] - AFC is enabled with max remote calls: 10.
+[2026-08-17 11:53:33] [INFO] [httpx:1025] - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+[2026-08-17 11:53:33] [INFO] [models.llm_factory:190] - Successfully parsed LLM response into schema 'TaskList'
+[2026-08-17 11:53:33] [INFO] [pipeline.extraction_pipeline:86] - Extracting Key Decisions...
+[2026-08-17 11:53:33] [INFO] [key_manager:131] - Using [GEMINI Key #1]
+[2026-08-17 11:53:33] [INFO] [models.llm_factory:40] - Calling LLM provider 'gemini' with model 'gemini-3.5-flash-lite'
+[2026-08-17 11:53:33] [INFO] [google_genai.models:6586] - AFC is enabled with max remote calls: 10.
+[2026-08-17 11:53:34] [INFO] [httpx:1025] - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+[2026-08-17 11:53:34] [INFO] [models.llm_factory:190] - Successfully parsed LLM response into schema 'DecisionList'
+[2026-08-17 11:53:34] [INFO] [pipeline.extraction_pipeline:141] - Persisting summary to meeting record...
+[2026-08-17 11:53:34] [INFO] [httpx:1025] - HTTP Request: PATCH https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 11:53:35] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?on_conflict=meeting_id "HTTP/2 201 Created"
+[2026-08-17 11:53:35] [INFO] [pipeline.extraction_pipeline:153] - Successfully persisted to 'summaries' table.
+[2026-08-17 11:53:35] [INFO] [pipeline.extraction_pipeline:158] - Clearing previous tasks and decisions for meeting '95a91c69-2c88-4a3d-b7df-37b77b00d047' to maintain idempotency...
+[2026-08-17 11:53:35] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 11:53:35] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 11:53:35] [INFO] [pipeline.extraction_pipeline:166] - Persisting 3 extracted tasks to database...
+[2026-08-17 11:53:36] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks "HTTP/2 201 Created"
+[2026-08-17 11:53:36] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks "HTTP/2 201 Created"
+[2026-08-17 11:53:36] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks "HTTP/2 201 Created"
+[2026-08-17 11:53:36] [INFO] [pipeline.extraction_pipeline:198] - Persisting 1 extracted decisions to database...
+[2026-08-17 11:53:36] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions "HTTP/2 201 Created"
+[2026-08-17 11:53:36] [INFO] [pipeline.extraction_pipeline:206] - LLM Extraction Pipeline completed successfully for meeting ID: 95a91c69-2c88-4a3d-b7df-37b77b00d047
+[2026-08-17 11:56:28] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 11:56:29] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 11:56:29] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 11:56:30] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 11:56:41] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 11:56:42] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 11:56:42] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 11:56:43] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 11:56:43] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 11:56:43] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 11:56:43] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 11:56:44] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 11:56:44] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 11:56:44] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 11:56:44] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 11:56:45] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 11:57:08] [INFO] [api.routes.chat:30] - Received chat request for meeting '95a91c69-2c88-4a3d-b7df-37b77b00d047' (scope: meeting): 'what are memebers of the meeting'
+[2026-08-17 11:57:08] [INFO] [pipeline.rag_pipeline:99] - Audit Log - RAG Chat Query: 'what are memebers of the meeting' | Scope: 'meeting' | MeetingID: '95a91c69-2c88-4a3d-b7df-37b77b00d047' | OrgID: 'None'
+[2026-08-17 11:57:08] [INFO] [pipeline.retrieval.hybrid_retriever:49] - Generating query embedding for: 'what are memebers of the meeting'...
+[2026-08-17 11:57:08] [INFO] [embeddings.embedding_manager:25] - Loading SentenceTransformer model 'all-MiniLM-L6-v2' locally...
+[2026-08-17 11:57:08] [INFO] [sentence_transformers.base.model:190] - No device provided, using cpu
+[2026-08-17 11:57:08] [INFO] [httpx:1025] - HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"
+[2026-08-17 11:57:09] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+[2026-08-17 11:57:09] [WARNING] [huggingface_hub.utils._http:953] - Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[2026-08-17 11:57:09] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+[2026-08-17 11:57:09] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+[2026-08-17 11:57:09] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+[2026-08-17 11:57:09] [INFO] [sentence_transformers.base.model:1022] - Loading SentenceTransformer model from sentence-transformers/all-MiniLM-L6-v2.
+[2026-08-17 11:57:09] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json "HTTP/1.1 307 Temporary Redirect"
+[2026-08-17 11:57:09] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config_sentence_transformers.json "HTTP/1.1 200 OK"
+[2026-08-17 11:57:10] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+[2026-08-17 11:57:10] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/README.md "HTTP/1.1 200 OK"
+[2026-08-17 11:57:10] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json "HTTP/1.1 307 Temporary Redirect"
+[2026-08-17 11:57:10] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/modules.json "HTTP/1.1 200 OK"
+[2026-08-17 11:57:10] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json "HTTP/1.1 307 Temporary Redirect"
+[2026-08-17 11:57:10] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/sentence_bert_config.json "HTTP/1.1 200 OK"
+[2026-08-17 11:57:10] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json "HTTP/1.1 404 Not Found"
+[2026-08-17 11:57:11] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+[2026-08-17 11:57:11] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+[2026-08-17 11:57:12] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/processor_config.json "HTTP/1.1 404 Not Found"
+[2026-08-17 11:57:12] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+[2026-08-17 11:57:13] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/video_preprocessor_config.json "HTTP/1.1 404 Not Found"
+[2026-08-17 11:57:13] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/preprocessor_config.json "HTTP/1.1 404 Not Found"
+[2026-08-17 11:57:13] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+[2026-08-17 11:57:13] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+[2026-08-17 11:57:13] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+[2026-08-17 11:57:13] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+[2026-08-17 11:57:14] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+[2026-08-17 11:57:14] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/config.json "HTTP/1.1 200 OK"
+[2026-08-17 11:57:15] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+[2026-08-17 11:57:15] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/tokenizer_config.json "HTTP/1.1 200 OK"
+[2026-08-17 11:57:15] [INFO] [httpx:1025] - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+[2026-08-17 11:57:15] [INFO] [httpx:1025] - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+[2026-08-17 11:57:15] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json "HTTP/1.1 307 Temporary Redirect"
+[2026-08-17 11:57:16] [INFO] [httpx:1025] - HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/1110a243fdf4706b3f48f1d95db1a4f5529b4d41/1_Pooling%2Fconfig.json "HTTP/1.1 200 OK"
+[2026-08-17 11:57:16] [INFO] [httpx:1025] - HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 "HTTP/1.1 200 OK"
+[2026-08-17 11:57:16] [INFO] [embeddings.embedding_manager:28] - SentenceTransformer model 'all-MiniLM-L6-v2' loaded successfully.
+[2026-08-17 11:57:16] [WARNING] [pipeline.retrieval.hybrid_retriever:58] - No dense vector results returned from vector store.
+[2026-08-17 11:57:16] [INFO] [pipeline.rag_pipeline:120] - No vector indexes found for meeting '95a91c69-2c88-4a3d-b7df-37b77b00d047'. Triggering auto-indexing...
+[2026-08-17 11:57:16] [INFO] [pipeline.rag_pipeline:44] - Indexing meeting '95a91c69-2c88-4a3d-b7df-37b77b00d047' into Chroma Vector Database...
+[2026-08-17 11:57:17] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 11:57:17] [INFO] [vectordb.chroma_store:46] - Adding 1 documents to Chroma collection 'meetmind_transcripts'...
+[2026-08-17 11:57:17] [INFO] [vectordb.chroma_store:54] - Successfully indexed 1 items in Chroma.
+[2026-08-17 11:57:17] [INFO] [watchfiles.main:309] - 4 changes detected
+[2026-08-17 11:57:17] [INFO] [pipeline.rag_pipeline:85] - Successfully indexed 1 transcript chunks for meeting '95a91c69-2c88-4a3d-b7df-37b77b00d047'.
+[2026-08-17 11:57:17] [INFO] [pipeline.retrieval.hybrid_retriever:49] - Generating query embedding for: 'what are memebers of the meeting'...
+[2026-08-17 11:57:17] [INFO] [pipeline.retrieval.hybrid_retriever:100] - Hybrid retrieval complete. Returning top-1 context matches.
+[2026-08-17 11:57:17] [INFO] [watchfiles.main:309] - 1 change detected
+[2026-08-17 11:57:17] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 11:57:17] [INFO] [pipeline.rag_pipeline:149] - Audit Log - Formatted RAG context (466 bytes) for query 'what are memebers of the meeting'
+[2026-08-17 11:57:17] [INFO] [key_manager:131] - Using [GEMINI Key #1]
+[2026-08-17 11:57:17] [INFO] [key_manager:131] - Using [GEMINI Key #1]
+[2026-08-17 11:57:17] [INFO] [models.llm_factory:40] - Calling LLM provider 'gemini' with model 'gemini-3.5-flash-lite'
+[2026-08-17 11:57:18] [INFO] [google_genai.models:6586] - AFC is enabled with max remote calls: 10.
+[2026-08-17 11:57:19] [INFO] [httpx:1025] - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+[2026-08-17 11:57:19] [INFO] [models.llm_factory:186] - Successfully parsed LLM response into schema 'ChatAnswer'
+[2026-08-17 11:57:19] [INFO] [pipeline.rag_pipeline:179] - Audit Log - Successfully generated RAG answer for query 'what are memebers of the meeting'
+[2026-08-17 11:57:49] [INFO] [watchfiles.main:309] - 1 change detected
+[2026-08-17 12:16:45] [INFO] [watchfiles.main:309] - 1 change detected
+[2026-08-17 12:28:18] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:28:21] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:28:21] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:28:22] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:28:44] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:28:45] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:28:45] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:28:45] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:30:23] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '69faaf3e-6fc6-4714-b993-378e0e300448'
+[2026-08-17 12:30:25] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.69faaf3e-6fc6-4714-b993-378e0e300448 "HTTP/2 200 OK"
+[2026-08-17 12:30:25] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.69faaf3e-6fc6-4714-b993-378e0e300448&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 12:30:26] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.69faaf3e-6fc6-4714-b993-378e0e300448 "HTTP/2 200 OK"
+[2026-08-17 12:30:26] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.69faaf3e-6fc6-4714-b993-378e0e300448 "HTTP/2 200 OK"
+[2026-08-17 12:30:26] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.69faaf3e-6fc6-4714-b993-378e0e300448 "HTTP/2 200 OK"
+[2026-08-17 12:30:26] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '69faaf3e-6fc6-4714-b993-378e0e300448'
+[2026-08-17 12:30:27] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.69faaf3e-6fc6-4714-b993-378e0e300448 "HTTP/2 200 OK"
+[2026-08-17 12:30:27] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.69faaf3e-6fc6-4714-b993-378e0e300448&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 12:30:27] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.69faaf3e-6fc6-4714-b993-378e0e300448 "HTTP/2 200 OK"
+[2026-08-17 12:30:28] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.69faaf3e-6fc6-4714-b993-378e0e300448 "HTTP/2 200 OK"
+[2026-08-17 12:30:28] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.69faaf3e-6fc6-4714-b993-378e0e300448 "HTTP/2 200 OK"
+[2026-08-17 12:32:10] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:32:11] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:32:11] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:32:11] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:35:18] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:35:19] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:35:19] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:35:20] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:35:25] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 12:35:25] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:35:25] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 12:35:25] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:35:26] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:35:26] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:35:26] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 12:35:26] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:35:27] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 12:35:27] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:35:27] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:35:27] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:35:38] [INFO] [api.routes.chat:30] - Received chat request for meeting '95a91c69-2c88-4a3d-b7df-37b77b00d047' (scope: meeting): 'guve me summary'
+[2026-08-17 12:35:38] [INFO] [pipeline.rag_pipeline:99] - Audit Log - RAG Chat Query: 'guve me summary' | Scope: 'meeting' | MeetingID: '95a91c69-2c88-4a3d-b7df-37b77b00d047' | OrgID: 'None'
+[2026-08-17 12:35:38] [INFO] [pipeline.retrieval.hybrid_retriever:49] - Generating query embedding for: 'guve me summary'...
+[2026-08-17 12:35:38] [INFO] [pipeline.retrieval.hybrid_retriever:100] - Hybrid retrieval complete. Returning top-1 context matches.
+[2026-08-17 12:35:39] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 12:35:39] [INFO] [pipeline.rag_pipeline:149] - Audit Log - Formatted RAG context (466 bytes) for query 'guve me summary'
+[2026-08-17 12:35:39] [INFO] [key_manager:131] - Using [GEMINI Key #1]
+[2026-08-17 12:35:39] [INFO] [key_manager:131] - Using [GEMINI Key #1]
+[2026-08-17 12:35:39] [INFO] [models.llm_factory:40] - Calling LLM provider 'gemini' with model 'gemini-3.5-flash-lite'
+[2026-08-17 12:35:39] [INFO] [google_genai.models:6586] - AFC is enabled with max remote calls: 10.
+[2026-08-17 12:35:41] [INFO] [httpx:1025] - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+[2026-08-17 12:35:41] [INFO] [models.llm_factory:186] - Successfully parsed LLM response into schema 'ChatAnswer'
+[2026-08-17 12:35:41] [INFO] [pipeline.rag_pipeline:179] - Audit Log - Successfully generated RAG answer for query 'guve me summary'
+[2026-08-17 12:36:05] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:36:05] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:36:05] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:36:06] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:40:45] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:40:47] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:40:47] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:40:47] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:40:51] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 12:40:51] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:40:51] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 12:40:52] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:40:52] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:40:53] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:40:53] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 12:40:53] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:40:53] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 12:40:54] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:40:54] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:40:54] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:41:26] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:41:28] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:41:28] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:41:28] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:41:50] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:41:51] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:41:51] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:41:51] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:42:07] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:42:07] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:42:07] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:42:08] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:42:27] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 12:42:28] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:42:28] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 12:42:28] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:42:28] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:42:29] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:42:29] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 12:42:29] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:42:29] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 12:42:30] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:42:30] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:42:30] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:48:48] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:48:49] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:48:49] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:48:49] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:49:52] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:49:53] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:49:53] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:49:53] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:50:42] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:50:43] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:50:43] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:50:43] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:50:52] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 12:50:53] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:50:53] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 12:50:54] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:50:54] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:50:55] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:50:55] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 12:50:55] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:50:55] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 12:50:55] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:50:56] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:50:56] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 12:51:36] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:51:37] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:51:37] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:51:37] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:51:41] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '69faaf3e-6fc6-4714-b993-378e0e300448'
+[2026-08-17 12:51:42] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.69faaf3e-6fc6-4714-b993-378e0e300448 "HTTP/2 200 OK"
+[2026-08-17 12:51:42] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.69faaf3e-6fc6-4714-b993-378e0e300448&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 12:51:42] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.69faaf3e-6fc6-4714-b993-378e0e300448 "HTTP/2 200 OK"
+[2026-08-17 12:51:42] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.69faaf3e-6fc6-4714-b993-378e0e300448 "HTTP/2 200 OK"
+[2026-08-17 12:51:43] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.69faaf3e-6fc6-4714-b993-378e0e300448 "HTTP/2 200 OK"
+[2026-08-17 12:51:43] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '69faaf3e-6fc6-4714-b993-378e0e300448'
+[2026-08-17 12:51:43] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.69faaf3e-6fc6-4714-b993-378e0e300448 "HTTP/2 200 OK"
+[2026-08-17 12:51:44] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.69faaf3e-6fc6-4714-b993-378e0e300448&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 12:51:44] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.69faaf3e-6fc6-4714-b993-378e0e300448 "HTTP/2 200 OK"
+[2026-08-17 12:51:44] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.69faaf3e-6fc6-4714-b993-378e0e300448 "HTTP/2 200 OK"
+[2026-08-17 12:51:45] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.69faaf3e-6fc6-4714-b993-378e0e300448 "HTTP/2 200 OK"
+[2026-08-17 12:51:49] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:51:50] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 12:51:50] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 12:51:50] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 14:27:53] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 14:27:55] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 14:27:55] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 14:27:55] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 14:34:28] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 14:34:29] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 14:34:29] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 14:34:29] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 14:37:15] [INFO] [api.routes.meetings:88] - Received audio upload request for meeting: 'ytest2' (recording.wav)
+[2026-08-17 14:37:15] [INFO] [pipeline.transcription_pipeline:40] - Starting Transcription Pipeline for meeting 'ytest2' (file: recording.wav)
+[2026-08-17 14:37:15] [INFO] [pipeline.ingestion.audio_processor:40] - Audio file 'recording.wav' (444639 bytes) validated successfully.
+[2026-08-17 14:37:15] [INFO] [pipeline.transcription_pipeline:47] - Uploading audio file to Supabase Storage as '0e9ccb22-10b0-48cf-b1d8-c6b3d4088513_recording.wav'...
+[2026-08-17 14:37:20] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/storage/v1/object/meeting-audio/0e9ccb22-10b0-48cf-b1d8-c6b3d4088513_recording.wav "HTTP/2 200 OK"
+[2026-08-17 14:37:20] [INFO] [api.supabase_client:81] - Audio file '0e9ccb22-10b0-48cf-b1d8-c6b3d4088513_recording.wav' uploaded successfully to bucket 'meeting-audio'.
+[2026-08-17 14:37:20] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/storage/v1/object/sign/meeting-audio/0e9ccb22-10b0-48cf-b1d8-c6b3d4088513_recording.wav "HTTP/2 200 OK"
+[2026-08-17 14:37:21] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/users?select=id&id=eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9 "HTTP/2 200 OK"
+[2026-08-17 14:37:21] [INFO] [pipeline.transcription_pipeline:68] - Inserting initial meeting record into Supabase DB...
+[2026-08-17 14:37:22] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings "HTTP/2 201 Created"
+[2026-08-17 14:37:22] [INFO] [models.providers.assemblyai_provider:50] - Starting AssemblyAI transcription for source: C:\Users\dearf\AppData\Local\Temp\tmpd_zv93ci.wav
+[2026-08-17 14:37:27] [INFO] [httpx:1025] - HTTP Request: POST https://api.assemblyai.com/v2/upload "HTTP/1.1 200 OK"
+[2026-08-17 14:37:28] [INFO] [httpx:1025] - HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+[2026-08-17 14:37:28] [INFO] [httpx:1025] - HTTP Request: GET https://api.assemblyai.com/v2/transcript/fafea890-bced-44b4-a00f-647fd231f6a0 "HTTP/1.1 200 OK"
+[2026-08-17 14:37:32] [INFO] [httpx:1025] - HTTP Request: GET https://api.assemblyai.com/v2/transcript/fafea890-bced-44b4-a00f-647fd231f6a0 "HTTP/1.1 200 OK"
+[2026-08-17 14:37:32] [INFO] [models.providers.assemblyai_provider:112] - AssemblyAI transcription complete. Extracted 1 utterances.
+[2026-08-17 14:37:32] [INFO] [pipeline.transcription_pipeline:99] - Extracting 1 participants: ['Speaker A']
+[2026-08-17 14:37:33] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/participants "HTTP/2 201 Created"
+[2026-08-17 14:37:33] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts "HTTP/2 201 Created"
+[2026-08-17 14:37:33] [INFO] [httpx:1025] - HTTP Request: PATCH https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:37:33] [INFO] [pipeline.transcription_pipeline:124] - Transcription Pipeline completed successfully for meeting ID: e8d38261-3660-41dc-9403-282c9e936eee
+[2026-08-17 14:37:33] [INFO] [api.routes.meetings:210] - Received analysis request for meeting ID: 'e8d38261-3660-41dc-9403-282c9e936eee'
+[2026-08-17 14:37:33] [INFO] [pipeline.extraction_pipeline:35] - Starting LLM Extraction Pipeline for meeting ID: e8d38261-3660-41dc-9403-282c9e936eee
+[2026-08-17 14:37:34] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&limit=100 "HTTP/2 200 OK"
+[2026-08-17 14:37:34] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 14:37:34] [INFO] [pipeline.extraction_pipeline:53] - Formatted transcript context (18 chars) for meeting e8d38261-3660-41dc-9403-282c9e936eee
+[2026-08-17 14:37:34] [INFO] [pipeline.extraction_pipeline:59] - Extracting Executive Summary...
+[2026-08-17 14:37:34] [INFO] [key_manager:131] - Using [GEMINI Key #1]
+[2026-08-17 14:37:34] [INFO] [models.llm_factory:40] - Calling LLM provider 'gemini' with model 'gemini-3.5-flash-lite'
+[2026-08-17 14:37:34] [INFO] [google_genai.models:6586] - AFC is enabled with max remote calls: 10.
+[2026-08-17 14:37:36] [INFO] [httpx:1025] - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+[2026-08-17 14:37:36] [INFO] [models.llm_factory:190] - Successfully parsed LLM response into schema 'ExecutiveSummary'
+[2026-08-17 14:37:36] [INFO] [pipeline.extraction_pipeline:73] - Extracting Action Items / Tasks...
+[2026-08-17 14:37:36] [INFO] [key_manager:131] - Using [GEMINI Key #1]
+[2026-08-17 14:37:36] [INFO] [models.llm_factory:40] - Calling LLM provider 'gemini' with model 'gemini-3.5-flash-lite'
+[2026-08-17 14:37:36] [INFO] [google_genai.models:6586] - AFC is enabled with max remote calls: 10.
+[2026-08-17 14:37:37] [INFO] [httpx:1025] - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+[2026-08-17 14:37:37] [INFO] [models.llm_factory:190] - Successfully parsed LLM response into schema 'TaskList'
+[2026-08-17 14:37:37] [INFO] [pipeline.extraction_pipeline:86] - Extracting Key Decisions...
+[2026-08-17 14:37:37] [INFO] [key_manager:131] - Using [GEMINI Key #1]
+[2026-08-17 14:37:37] [INFO] [models.llm_factory:40] - Calling LLM provider 'gemini' with model 'gemini-3.5-flash-lite'
+[2026-08-17 14:37:38] [INFO] [google_genai.models:6586] - AFC is enabled with max remote calls: 10.
+[2026-08-17 14:37:39] [INFO] [httpx:1025] - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+[2026-08-17 14:37:39] [INFO] [models.llm_factory:190] - Successfully parsed LLM response into schema 'DecisionList'
+[2026-08-17 14:37:39] [INFO] [pipeline.extraction_pipeline:141] - Persisting summary to meeting record...
+[2026-08-17 14:37:40] [INFO] [httpx:1025] - HTTP Request: PATCH https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:37:41] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?on_conflict=meeting_id "HTTP/2 201 Created"
+[2026-08-17 14:37:41] [INFO] [pipeline.extraction_pipeline:153] - Successfully persisted to 'summaries' table.
+[2026-08-17 14:37:41] [INFO] [pipeline.extraction_pipeline:158] - Clearing previous tasks and decisions for meeting 'e8d38261-3660-41dc-9403-282c9e936eee' to maintain idempotency...
+[2026-08-17 14:37:41] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:37:42] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:37:42] [INFO] [pipeline.extraction_pipeline:166] - Persisting 0 extracted tasks to database...
+[2026-08-17 14:37:42] [INFO] [pipeline.extraction_pipeline:198] - Persisting 1 extracted decisions to database...
+[2026-08-17 14:37:42] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions "HTTP/2 201 Created"
+[2026-08-17 14:37:42] [INFO] [pipeline.extraction_pipeline:206] - LLM Extraction Pipeline completed successfully for meeting ID: e8d38261-3660-41dc-9403-282c9e936eee
+[2026-08-17 14:37:44] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 14:37:44] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 14:37:44] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 14:37:44] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 14:38:36] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: 'e8d38261-3660-41dc-9403-282c9e936eee'
+[2026-08-17 14:38:36] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:38:37] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 14:38:37] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:38:38] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:38:38] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:38:38] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: 'e8d38261-3660-41dc-9403-282c9e936eee'
+[2026-08-17 14:38:38] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:38:39] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 14:38:39] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:38:39] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:38:39] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:38:50] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 14:38:51] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 14:38:51] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 14:38:51] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 14:38:53] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 14:38:53] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:38:54] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 14:38:54] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:38:54] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:38:55] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:38:55] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 14:38:55] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:38:56] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 14:38:56] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:38:56] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:38:57] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:39:01] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 14:39:02] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 14:39:02] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 14:39:02] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 14:39:03] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 14:39:04] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:39:04] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 14:39:04] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:39:05] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:39:05] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:39:05] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 14:39:05] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:39:06] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 14:39:06] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:39:06] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:39:07] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:39:43] [INFO] [api.routes.chat:30] - Received chat request for meeting '95a91c69-2c88-4a3d-b7df-37b77b00d047' (scope: meeting): 'what is the gaenda of the meeting'
+[2026-08-17 14:39:43] [INFO] [pipeline.rag_pipeline:99] - Audit Log - RAG Chat Query: 'what is the gaenda of the meeting' | Scope: 'meeting' | MeetingID: '95a91c69-2c88-4a3d-b7df-37b77b00d047' | OrgID: 'None'
+[2026-08-17 14:39:43] [INFO] [pipeline.retrieval.hybrid_retriever:49] - Generating query embedding for: 'what is the gaenda of the meeting'...
+[2026-08-17 14:39:44] [INFO] [pipeline.retrieval.hybrid_retriever:100] - Hybrid retrieval complete. Returning top-1 context matches.
+[2026-08-17 14:39:45] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 14:39:45] [INFO] [pipeline.rag_pipeline:149] - Audit Log - Formatted RAG context (466 bytes) for query 'what is the gaenda of the meeting'
+[2026-08-17 14:39:45] [INFO] [key_manager:131] - Using [GEMINI Key #1]
+[2026-08-17 14:39:45] [INFO] [key_manager:131] - Using [GEMINI Key #1]
+[2026-08-17 14:39:45] [INFO] [models.llm_factory:40] - Calling LLM provider 'gemini' with model 'gemini-3.5-flash-lite'
+[2026-08-17 14:39:45] [INFO] [google_genai.models:6586] - AFC is enabled with max remote calls: 10.
+[2026-08-17 14:39:48] [INFO] [httpx:1025] - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+[2026-08-17 14:39:48] [INFO] [models.llm_factory:186] - Successfully parsed LLM response into schema 'ChatAnswer'
+[2026-08-17 14:39:48] [INFO] [pipeline.rag_pipeline:179] - Audit Log - Successfully generated RAG answer for query 'what is the gaenda of the meeting'
+[2026-08-17 14:40:27] [INFO] [api.routes.meetings:88] - Received audio upload request for meeting: 'Google Meet Sync 2' (extension_meeting.wav)
+[2026-08-17 14:40:27] [INFO] [pipeline.transcription_pipeline:40] - Starting Transcription Pipeline for meeting 'Google Meet Sync 2' (file: extension_meeting.wav)
+[2026-08-17 14:40:27] [INFO] [pipeline.ingestion.audio_processor:40] - Audio file 'extension_meeting.wav' (156811 bytes) validated successfully.
+[2026-08-17 14:40:27] [INFO] [pipeline.transcription_pipeline:47] - Uploading audio file to Supabase Storage as 'e6c83f87-e72d-41d0-856c-0356e64602f7_extension_meeting.wav'...
+[2026-08-17 14:40:30] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/storage/v1/object/meeting-audio/e6c83f87-e72d-41d0-856c-0356e64602f7_extension_meeting.wav "HTTP/2 200 OK"
+[2026-08-17 14:40:30] [INFO] [api.supabase_client:81] - Audio file 'e6c83f87-e72d-41d0-856c-0356e64602f7_extension_meeting.wav' uploaded successfully to bucket 'meeting-audio'.
+[2026-08-17 14:40:30] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/storage/v1/object/sign/meeting-audio/e6c83f87-e72d-41d0-856c-0356e64602f7_extension_meeting.wav "HTTP/2 200 OK"
+[2026-08-17 14:40:30] [INFO] [pipeline.transcription_pipeline:68] - Inserting initial meeting record into Supabase DB...
+[2026-08-17 14:40:31] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings "HTTP/2 201 Created"
+[2026-08-17 14:40:31] [INFO] [models.providers.assemblyai_provider:50] - Starting AssemblyAI transcription for source: C:\Users\dearf\AppData\Local\Temp\tmp_15hy9ba.wav
+[2026-08-17 14:40:35] [INFO] [httpx:1025] - HTTP Request: POST https://api.assemblyai.com/v2/upload "HTTP/1.1 200 OK"
+[2026-08-17 14:40:35] [INFO] [httpx:1025] - HTTP Request: POST https://api.assemblyai.com/v2/transcript "HTTP/1.1 200 OK"
+[2026-08-17 14:40:35] [INFO] [httpx:1025] - HTTP Request: GET https://api.assemblyai.com/v2/transcript/91c326fd-47b5-42cb-8927-724e6631ca66 "HTTP/1.1 200 OK"
+[2026-08-17 14:40:39] [INFO] [httpx:1025] - HTTP Request: GET https://api.assemblyai.com/v2/transcript/91c326fd-47b5-42cb-8927-724e6631ca66 "HTTP/1.1 200 OK"
+[2026-08-17 14:40:39] [INFO] [models.providers.assemblyai_provider:112] - AssemblyAI transcription complete. Extracted 1 utterances.
+[2026-08-17 14:40:39] [INFO] [pipeline.transcription_pipeline:99] - Extracting 1 participants: ['Speaker A']
+[2026-08-17 14:40:40] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/participants "HTTP/2 201 Created"
+[2026-08-17 14:40:41] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts "HTTP/2 201 Created"
+[2026-08-17 14:40:41] [INFO] [httpx:1025] - HTTP Request: PATCH https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-17 14:40:41] [INFO] [pipeline.transcription_pipeline:124] - Transcription Pipeline completed successfully for meeting ID: 3629367d-0353-4775-b0bb-6fe98647d066
+[2026-08-17 14:40:41] [INFO] [api.routes.meetings:210] - Received analysis request for meeting ID: '3629367d-0353-4775-b0bb-6fe98647d066'
+[2026-08-17 14:40:41] [INFO] [pipeline.extraction_pipeline:35] - Starting LLM Extraction Pipeline for meeting ID: 3629367d-0353-4775-b0bb-6fe98647d066
+[2026-08-17 14:40:41] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&limit=100 "HTTP/2 200 OK"
+[2026-08-17 14:40:41] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 14:40:41] [INFO] [pipeline.extraction_pipeline:53] - Formatted transcript context (191 chars) for meeting 3629367d-0353-4775-b0bb-6fe98647d066
+[2026-08-17 14:40:41] [INFO] [pipeline.extraction_pipeline:59] - Extracting Executive Summary...
+[2026-08-17 14:40:41] [INFO] [key_manager:131] - Using [GEMINI Key #1]
+[2026-08-17 14:40:41] [INFO] [models.llm_factory:40] - Calling LLM provider 'gemini' with model 'gemini-3.5-flash-lite'
+[2026-08-17 14:40:42] [INFO] [google_genai.models:6586] - AFC is enabled with max remote calls: 10.
+[2026-08-17 14:40:44] [INFO] [httpx:1025] - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+[2026-08-17 14:40:44] [INFO] [models.llm_factory:190] - Successfully parsed LLM response into schema 'ExecutiveSummary'
+[2026-08-17 14:40:44] [INFO] [pipeline.extraction_pipeline:73] - Extracting Action Items / Tasks...
+[2026-08-17 14:40:44] [INFO] [key_manager:131] - Using [GEMINI Key #1]
+[2026-08-17 14:40:44] [INFO] [models.llm_factory:40] - Calling LLM provider 'gemini' with model 'gemini-3.5-flash-lite'
+[2026-08-17 14:40:44] [INFO] [google_genai.models:6586] - AFC is enabled with max remote calls: 10.
+[2026-08-17 14:40:46] [INFO] [httpx:1025] - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+[2026-08-17 14:40:46] [INFO] [models.llm_factory:190] - Successfully parsed LLM response into schema 'TaskList'
+[2026-08-17 14:40:46] [INFO] [pipeline.extraction_pipeline:86] - Extracting Key Decisions...
+[2026-08-17 14:40:46] [INFO] [key_manager:131] - Using [GEMINI Key #1]
+[2026-08-17 14:40:46] [INFO] [models.llm_factory:40] - Calling LLM provider 'gemini' with model 'gemini-3.5-flash-lite'
+[2026-08-17 14:40:46] [INFO] [google_genai.models:6586] - AFC is enabled with max remote calls: 10.
+[2026-08-17 14:40:48] [INFO] [httpx:1025] - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent "HTTP/1.1 200 OK"
+[2026-08-17 14:40:48] [INFO] [models.llm_factory:190] - Successfully parsed LLM response into schema 'DecisionList'
+[2026-08-17 14:40:48] [INFO] [pipeline.extraction_pipeline:141] - Persisting summary to meeting record...
+[2026-08-17 14:40:48] [INFO] [httpx:1025] - HTTP Request: PATCH https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-17 14:40:49] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?on_conflict=meeting_id "HTTP/2 201 Created"
+[2026-08-17 14:40:49] [INFO] [pipeline.extraction_pipeline:153] - Successfully persisted to 'summaries' table.
+[2026-08-17 14:40:49] [INFO] [pipeline.extraction_pipeline:158] - Clearing previous tasks and decisions for meeting '3629367d-0353-4775-b0bb-6fe98647d066' to maintain idempotency...
+[2026-08-17 14:40:49] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-17 14:40:49] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-17 14:40:49] [INFO] [pipeline.extraction_pipeline:166] - Persisting 1 extracted tasks to database...
+[2026-08-17 14:40:49] [INFO] [httpx:1025] - HTTP Request: POST https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks "HTTP/2 201 Created"
+[2026-08-17 14:40:49] [INFO] [pipeline.extraction_pipeline:198] - Persisting 0 extracted decisions to database...
+[2026-08-17 14:40:49] [INFO] [pipeline.extraction_pipeline:206] - LLM Extraction Pipeline completed successfully for meeting ID: 3629367d-0353-4775-b0bb-6fe98647d066
+[2026-08-17 14:40:50] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 14:40:50] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 14:40:50] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 14:40:50] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 14:40:56] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: 'e8d38261-3660-41dc-9403-282c9e936eee'
+[2026-08-17 14:40:56] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:40:57] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 14:40:57] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:40:57] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:40:58] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:40:58] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: 'e8d38261-3660-41dc-9403-282c9e936eee'
+[2026-08-17 14:40:58] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:40:58] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 14:40:59] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:40:59] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:41:00] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.e8d38261-3660-41dc-9403-282c9e936eee "HTTP/2 200 OK"
+[2026-08-17 14:41:11] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 14:41:12] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 14:41:12] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 14:41:12] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 14:42:02] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 14:42:03] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:42:04] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 14:42:04] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:42:04] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:42:04] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:42:04] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-17 14:42:05] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:42:05] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-17 14:42:05] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:42:06] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:42:06] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-17 14:47:34] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 14:47:35] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 14:47:35] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: 'c556f8ac-0bb8-4040-814f-2d19e41f5ef9'...
+[2026-08-17 14:47:36] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.c556f8ac-0bb8-4040-814f-2d19e41f5ef9%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-17 15:19:58] [INFO] [main:26] - Shutting down MeetMind AI Backend.
+[2026-08-19 12:11:17] [INFO] [models.providers.assemblyai_provider:39] - AssemblyAIProvider initialized successfully.
+[2026-08-19 12:11:21] [INFO] [key_manager:84] - KeyManager initialized with 5 Gemini keys and 1 OpenRouter fallback keys.
+[2026-08-19 12:12:53] [INFO] [embeddings.embedding_manager:19] - EmbeddingManager initialized with model 'all-MiniLM-L6-v2'.
+[2026-08-19 12:12:55] [INFO] [vectordb.chroma_store:23] - Initializing Persistent ChromaDB client at 'D:\Projects\MeetMind\MeetMind_Backend\vectordb\data'
+[2026-08-19 12:12:57] [INFO] [vectordb.chroma_store:32] - Chroma collection 'meetmind_transcripts' ready. Count: 7
+[2026-08-19 12:12:59] [INFO] [models.providers.assemblyai_provider:39] - AssemblyAIProvider initialized successfully.
+[2026-08-19 12:13:03] [INFO] [key_manager:84] - KeyManager initialized with 5 Gemini keys and 1 OpenRouter fallback keys.
+[2026-08-19 12:13:18] [INFO] [embeddings.embedding_manager:19] - EmbeddingManager initialized with model 'all-MiniLM-L6-v2'.
+[2026-08-19 12:13:19] [INFO] [vectordb.chroma_store:23] - Initializing Persistent ChromaDB client at 'D:\Projects\MeetMind\MeetMind_Backend\vectordb\data'
+[2026-08-19 12:13:20] [INFO] [watchfiles.main:309] - 1 change detected
+[2026-08-19 12:13:20] [INFO] [vectordb.chroma_store:32] - Chroma collection 'meetmind_transcripts' ready. Count: 7
+[2026-08-19 12:13:20] [INFO] [watchfiles.main:309] - 8 changes detected
+[2026-08-19 12:13:20] [INFO] [main:19] - ============================================================
+[2026-08-19 12:13:20] [INFO] [main:20] -  MeetMind AI Backend Server is Running Successfully!
+[2026-08-19 12:13:20] [INFO] [main:21] -  Server URL:           http://localhost:8000
+[2026-08-19 12:13:20] [INFO] [main:22] -  Interactive API Docs: http://localhost:8000/docs
+[2026-08-19 12:13:20] [INFO] [main:23] -  Health Check:         http://localhost:8000/api/v1/health
+[2026-08-19 12:13:20] [INFO] [main:24] - ============================================================
+[2026-08-19 12:13:27] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:13:27] [INFO] [api.supabase_client:28] - Supabase admin client initialized successfully.
+[2026-08-19 12:13:28] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:13:28] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:13:29] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:13:46] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:13:47] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:13:47] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:13:47] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:13:58] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:13:58] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:13:58] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:13:58] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:15:04] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:15:04] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:15:04] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:15:05] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:27:13] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:27:14] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:27:14] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:27:14] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:36:08] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:36:09] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:36:09] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:36:10] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:37:07] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:37:07] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:37:07] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:37:08] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:37:15] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:37:15] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:37:15] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:37:15] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:37:24] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '3629367d-0353-4775-b0bb-6fe98647d066'
+[2026-08-19 12:37:24] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:37:25] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-19 12:37:25] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:37:25] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:37:26] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:37:26] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '3629367d-0353-4775-b0bb-6fe98647d066'
+[2026-08-19 12:37:26] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:37:26] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-19 12:37:26] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:37:27] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:37:27] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:38:47] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:38:48] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:38:48] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:38:49] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:44:29] [INFO] [watchfiles.main:309] - 3 changes detected
+[2026-08-19 12:44:29] [INFO] [watchfiles.main:309] - 1 change detected
+[2026-08-19 12:45:02] [INFO] [watchfiles.main:309] - 1 change detected
+[2026-08-19 12:45:02] [INFO] [main:26] - Shutting down MeetMind AI Backend.
+[2026-08-19 12:45:05] [INFO] [watchfiles.main:309] - 1 change detected
+[2026-08-19 12:45:10] [INFO] [watchfiles.main:309] - 5 changes detected
+[2026-08-19 12:45:10] [INFO] [models.providers.assemblyai_provider:39] - AssemblyAIProvider initialized successfully.
+[2026-08-19 12:45:10] [INFO] [watchfiles.main:309] - 1 change detected
+[2026-08-19 12:45:11] [INFO] [watchfiles.main:309] - 1 change detected
+[2026-08-19 12:45:13] [INFO] [watchfiles.main:309] - 5 changes detected
+[2026-08-19 12:45:14] [INFO] [models.providers.assemblyai_provider:39] - AssemblyAIProvider initialized successfully.
+[2026-08-19 12:45:16] [INFO] [watchfiles.main:309] - 1 change detected
+[2026-08-19 12:45:17] [INFO] [watchfiles.main:309] - 1 change detected
+[2026-08-19 12:45:19] [INFO] [watchfiles.main:309] - 5 changes detected
+[2026-08-19 12:45:20] [INFO] [models.providers.assemblyai_provider:39] - AssemblyAIProvider initialized successfully.
+[2026-08-19 12:45:24] [INFO] [key_manager:84] - KeyManager initialized with 5 Gemini keys and 1 OpenRouter fallback keys.
+[2026-08-19 12:47:14] [INFO] [embeddings.embedding_manager:19] - EmbeddingManager initialized with model 'all-MiniLM-L6-v2'.
+[2026-08-19 12:47:17] [INFO] [vectordb.chroma_store:23] - Initializing Persistent ChromaDB client at 'D:\Projects\MeetMind\MeetMind_Backend\vectordb\data'
+[2026-08-19 12:47:17] [INFO] [watchfiles.main:309] - 1 change detected
+[2026-08-19 12:47:19] [INFO] [watchfiles.main:309] - 7 changes detected
+[2026-08-19 12:47:19] [INFO] [vectordb.chroma_store:32] - Chroma collection 'meetmind_transcripts' ready. Count: 7
+[2026-08-19 12:47:20] [INFO] [watchfiles.main:309] - 1 change detected
+[2026-08-19 12:47:20] [INFO] [main:19] - ============================================================
+[2026-08-19 12:47:20] [INFO] [main:20] -  MeetMind AI Backend Server is Running Successfully!
+[2026-08-19 12:47:20] [INFO] [main:21] -  Server URL:           http://localhost:8000
+[2026-08-19 12:47:20] [INFO] [main:22] -  Interactive API Docs: http://localhost:8000/docs
+[2026-08-19 12:47:20] [INFO] [main:23] -  Health Check:         http://localhost:8000/api/v1/health
+[2026-08-19 12:47:20] [INFO] [main:24] - ============================================================
+[2026-08-19 12:50:44] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:50:44] [INFO] [api.supabase_client:28] - Supabase admin client initialized successfully.
+[2026-08-19 12:50:45] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:50:45] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:50:45] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:50:59] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '3629367d-0353-4775-b0bb-6fe98647d066'
+[2026-08-19 12:51:00] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:51:00] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-19 12:51:00] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:51:01] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:51:01] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:51:01] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '3629367d-0353-4775-b0bb-6fe98647d066'
+[2026-08-19 12:51:01] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:51:02] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-19 12:51:02] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:51:02] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:51:02] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:51:17] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:51:17] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:51:17] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:51:17] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:51:19] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-19 12:51:19] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 12:51:20] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-19 12:51:20] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 12:51:20] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 12:51:20] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 12:51:20] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-19 12:51:21] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 12:51:21] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-19 12:51:21] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 12:51:22] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 12:51:22] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 12:54:32] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-19 12:54:32] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 12:54:33] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-19 12:54:33] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 12:54:33] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 12:54:34] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 12:54:34] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-19 12:54:34] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 12:54:35] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-19 12:54:35] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 12:54:36] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 12:54:36] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 12:57:05] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:57:05] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:57:05] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:57:06] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 12:57:22] [INFO] [api.routes.meetings:233] - Received delete request for meeting ID: '3629367d-0353-4775-b0bb-6fe98647d066'
+[2026-08-19 12:57:22] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:57:23] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:57:23] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:57:23] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:57:24] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/participants?meeting_id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:57:24] [INFO] [httpx:1025] - HTTP Request: DELETE https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?id=eq.3629367d-0353-4775-b0bb-6fe98647d066 "HTTP/2 200 OK"
+[2026-08-19 12:57:24] [INFO] [api.routes.meetings:246] - Successfully deleted meeting record '3629367d-0353-4775-b0bb-6fe98647d066' and related sub-entities.
+[2026-08-19 12:57:24] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 12:57:24] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 13:01:24] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-19 13:01:25] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 13:01:25] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-19 13:01:25] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 13:01:25] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 13:01:26] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 13:01:26] [INFO] [api.routes.meetings:135] - Fetching details for meeting ID: '95a91c69-2c88-4a3d-b7df-37b77b00d047'
+[2026-08-19 13:01:26] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 13:01:26] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/transcripts?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047&order=start_time.asc "HTTP/2 200 OK"
+[2026-08-19 13:01:27] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/summaries?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 13:01:27] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/tasks?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 13:01:27] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/decisions?select=%2A&meeting_id=eq.95a91c69-2c88-4a3d-b7df-37b77b00d047 "HTTP/2 200 OK"
+[2026-08-19 13:01:27] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 13:01:28] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 13:01:28] [INFO] [api.routes.meetings:43] - Fetching meetings from Supabase DB for user_id: '8a00fad9-c74b-47ce-aad7-219ec9029e4f'...
+[2026-08-19 13:01:28] [INFO] [httpx:1025] - HTTP Request: GET https://tbaptguhwkiuozcmunal.supabase.co/rest/v1/meetings?select=%2A&or=%28created_by.eq.8a00fad9-c74b-47ce-aad7-219ec9029e4f%2Ccreated_by.is.null%29&order=created_at.desc "HTTP/2 200 OK"
+[2026-08-19 14:20:50] [INFO] [main:26] - Shutting down MeetMind AI Backend.
+[2026-08-20 12:07:17] [INFO] [models.providers.assemblyai_provider:39] - AssemblyAIProvider initialized successfully.
+[2026-08-20 12:07:19] [INFO] [key_manager:84] - KeyManager initialized with 5 Gemini keys and 1 OpenRouter fallback keys.
+[2026-08-20 12:08:04] [INFO] [embeddings.embedding_manager:19] - EmbeddingManager initialized with model 'all-MiniLM-L6-v2'.
+[2026-08-20 12:08:06] [INFO] [vectordb.chroma_store:23] - Initializing Persistent ChromaDB client at 'D:\Projects\MeetMind\MeetMind_Backend\vectordb\data'
+[2026-08-20 12:08:06] [INFO] [vectordb.chroma_store:32] - Chroma collection 'meetmind_transcripts' ready. Count: 7
+[2026-08-20 12:08:08] [INFO] [models.providers.assemblyai_provider:39] - AssemblyAIProvider initialized successfully.
+[2026-08-20 12:08:10] [INFO] [key_manager:84] - KeyManager initialized with 5 Gemini keys and 1 OpenRouter fallback keys.
+[2026-08-20 12:08:20] [INFO] [embeddings.embedding_manager:19] - EmbeddingManager initialized with model 'all-MiniLM-L6-v2'.
+[2026-08-20 12:08:21] [INFO] [vectordb.chroma_store:23] - Initializing Persistent ChromaDB client at 'D:\Projects\MeetMind\MeetMind_Backend\vectordb\data'
+[2026-08-20 12:08:21] [INFO] [watchfiles.main:309] - 1 change detected
+[2026-08-20 12:08:21] [INFO] [vectordb.chroma_store:32] - Chroma collection 'meetmind_transcripts' ready. Count: 7
