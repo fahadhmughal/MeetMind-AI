@@ -45,3 +45,17 @@ class MeetingAnalysisResult(BaseModel):
     summary: ExecutiveSummary
     tasks: List[ExtractedTask] = Field(default_factory=list)
     decisions: List[ExtractedDecision] = Field(default_factory=list)
+
+
+class CleanedUtterance(BaseModel):
+    """Schema for individual cleaned speaker utterance."""
+    speaker: str = Field(description="Speaker label (e.g. 'Speaker 1'), unchanged.")
+    content: str = Field(description="Cleaned transcript content for this utterance.")
+    start_time: float = Field(default=0.0, description="Start timestamp in seconds.")
+    end_time: float = Field(default=0.0, description="End timestamp in seconds.")
+
+
+class CleanedTranscript(BaseModel):
+    """Schema wrapper for a collection of cleaned transcript utterances."""
+    utterances: List[CleanedUtterance] = Field(default_factory=list, description="List of cleaned utterances.")
+

@@ -1,8 +1,18 @@
-"""FastAPI routes for meeting upload, transcript retrieval, speaker renaming, and LLM analysis."""
+import uuid
+import inspect
+import starlette.routing
+
+if "on_startup" not in inspect.signature(starlette.routing.Router.__init__).parameters:
+    _orig_router_init = starlette.routing.Router.__init__
+    def _compat_router_init(self, *args, **kwargs):
+        kwargs.pop("on_startup", None)
+        kwargs.pop("on_shutdown", None)
+        _orig_router_init(self, *args, **kwargs)
+    starlette.routing.Router.__init__ = _compat_router_init
 
 from typing import Optional, Dict
 from pydantic import BaseModel, Field
-from fastapi import APIRouter, UploadFile, File, Form, Header, HTTPException, status
+from fastapi import APIRouter, UploadFile, File, Form, Header, HTTPException, status, BackgroundTasks
 from pipeline.transcription_pipeline import transcription_pipeline
 from pipeline.extraction_pipeline import extraction_pipeline
 from api.supabase_client import supabase_service
@@ -11,6 +21,35 @@ from utils.logger import get_logger
 logger = get_logger(__name__)
 
 router = APIRouter(prefix="/api/v1/meetings", tags=["Meetings"])
+
+
+def _run_background_pipeline(
+    meeting_id: str,
+    file_bytes: bytes,
+    filename: str,
+    title: str,
+    description: Optional[str],
+    user_id: Optional[str]
+):
+    try:
+        transcription_pipeline.process_meeting_audio(
+            file_bytes=file_bytes,
+            file_name=filename,
+            title=title,
+            description=description,
+            user_id=user_id,
+            existing_meeting_id=meeting_id
+        )
+        try:
+            extraction_pipeline.analyze_meeting(meeting_id)
+        except Exception as ext_err:
+            logger.warning(f"Background analysis warning for meeting '{meeting_id}': {ext_err}")
+    except Exception as exc:
+        logger.error(f"Async meeting processing failed for meeting '{meeting_id}': {exc}")
+        try:
+            supabase_service.client.table("meetings").update({"status": "failed"}).eq("id", meeting_id).execute()
+        except Exception:
+            pass
 
 
 class SpeakerRenameRequest(BaseModel):
@@ -77,6 +116,7 @@ async def list_meetings(
 
 @router.post("/upload", status_code=status.HTTP_201_CREATED)
 async def upload_and_process_meeting(
+    background_tasks: BackgroundTasks,
     file: UploadFile = File(...),
     title: str = Form(...),
     description: Optional[str] = Form(None),
@@ -84,7 +124,7 @@ async def upload_and_process_meeting(
     authorization: Optional[str] = Header(None),
     x_user_id: Optional[str] = Header(None, alias="X-User-Id")
 ):
-    """API endpoint to upload meeting audio, transcribe via AssemblyAI, and store in database under user_id."""
+    """API endpoint to upload meeting audio and queue processing asynchronously in background."""
     logger.info(f"Received audio upload request for meeting: '{title}' ({file.filename})")
 
     target_user_id = user_id or x_user_id
@@ -105,28 +145,60 @@ async def upload_and_process_meeting(
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Uploaded audio file is empty.")
 
     try:
-        meeting_record = transcription_pipeline.process_audio_upload(
-            file_bytes=contents,
-            filename=file.filename,
-            title=title,
-            description=description,
-            user_id=target_user_id
-        )
-        return {
-            "status": "success",
-            "message": "Meeting audio uploaded and transcribed successfully.",
-            **meeting_record
-        }
-
-    except ValueError as val_err:
+        from pipeline.ingestion.audio_processor import AudioProcessor
+        AudioProcessor.validate_audio_file(contents, file.filename)
+    except Exception as val_err:
         logger.warning(f"Validation error during audio upload: {val_err}")
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(val_err))
-    except Exception as exc:
-        logger.error(f"Failed to process meeting upload: {exc}")
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Audio processing failed: {str(exc)}"
-        )
+
+    meeting_id = str(uuid.uuid4())
+    meeting_data = {
+        "id": meeting_id,
+        "title": title,
+        "description": description or "",
+        "status": "processing",
+        "duration_seconds": 0
+    }
+    if target_user_id:
+        if hasattr(supabase_service, "ensure_user_exists"):
+            supabase_service.ensure_user_exists(target_user_id)
+        meeting_data["created_by"] = target_user_id
+
+    logger.info(f"Pre-inserting meeting record '{meeting_id}' into Supabase DB...")
+    try:
+        meeting_record = supabase_service.insert("meetings", meeting_data)
+    except Exception as insert_err:
+        err_str = str(insert_err).lower()
+        if "meetings_created_by_fkey" in err_str or "foreign key constraint" in err_str or "23503" in err_str:
+            logger.warning(f"Foreign key constraint notice for user '{target_user_id}'. Retrying without created_by link...")
+            meeting_data.pop("created_by", None)
+            meeting_record = supabase_service.insert("meetings", meeting_data)
+        else:
+            logger.error(f"Failed to pre-insert meeting record: {insert_err}")
+            meeting_record = {"id": meeting_id}
+
+    created_id = meeting_record.get("id") or meeting_id
+
+    background_tasks.add_task(
+        _run_background_pipeline,
+        meeting_id=created_id,
+        file_bytes=contents,
+        filename=file.filename,
+        title=title,
+        description=description,
+        user_id=target_user_id
+    )
+
+    logger.info(f"Queued background processing for meeting '{created_id}'. Returning 201 Created immediately.")
+
+    return {
+        "status": "success",
+        "message": "Meeting audio uploaded. Processing started in background.",
+        "meeting_id": created_id,
+        "id": created_id,
+        "title": title,
+        "status_detail": "processing"
+    }
 
 
 @router.get("/{meeting_id}", status_code=status.HTTP_200_OK)

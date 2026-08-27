@@ -107,6 +107,8 @@ class LLMFactory:
                     data_dict = {"tasks": data_obj}
                 elif "decisions" in response_schema.model_fields:
                     data_dict = {"decisions": data_obj}
+                elif "utterances" in response_schema.model_fields:
+                    data_dict = {"utterances": data_obj}
                 else:
                     data_dict = {"data": data_obj}
             elif isinstance(data_obj, dict):
@@ -133,6 +135,17 @@ class LLMFactory:
                         for val in data_dict.values():
                             if isinstance(val, list) and (len(val) == 0 or isinstance(val[0], dict)):
                                 data_dict["decisions"] = val
+                                break
+                # Normalize top-level array keys for CleanedTranscript
+                if "utterances" in response_schema.model_fields and "utterances" not in data_dict:
+                    for possible_key in ["cleaned_utterances", "transcript", "utterances_list", "items", "data", "results"]:
+                        if possible_key in data_dict and isinstance(data_dict[possible_key], list):
+                            data_dict["utterances"] = data_dict[possible_key]
+                            break
+                    if "utterances" not in data_dict:
+                        for val in data_dict.values():
+                            if isinstance(val, list) and (len(val) == 0 or isinstance(val[0], dict)):
+                                data_dict["utterances"] = val
                                 break
             else:
                 data_dict = {}

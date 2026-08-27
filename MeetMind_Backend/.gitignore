@@ -1,23 +1,66 @@
-# Python Virtual Environment
+# Environment Secrets
+.env
+.env.*
+*.env
+!.env.example
+*.pem
+*.key
+
+# Documents & Presentation Files
+*.docx
+*.doc
+*.pdf
+*.pptx
+*.ppt
+*.xlsx
+*.xls
+~$*.doc*
+
+# Python Virtual Environment & Packages
 venv/
 .venv/
+env/
+ENV/
+*.egg-info/
+.eggs/
+
+# Python Bytecode & Test Caches
 __pycache__/
+*.py[cod]
+*$py.class
 .pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
 
 # Vector DB & SQLite Databases
 vectordb/data/
 *.sqlite3
+*.sqlite3-journal
+*.sqlite
+*.db
 *.bin
+*.chroma
 
 # Audio Recordings
 audio/*
 !.gitkeep
+*.wav
+*.mp3
+*.m4a
+*.ogg
+*.flac
 
 # Logs
 logs/
 *.log
 
-# Environment Secrets
-.env
-*.env
-!.env.example
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+

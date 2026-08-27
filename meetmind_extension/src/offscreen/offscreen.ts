@@ -24,7 +24,13 @@ async function getCombinedStream(streamId?: string): Promise<MediaStream> {
 
   // 1. Capture microphone audio
   try {
-    rawMicStream = await navigator.mediaDevices.getUserMedia({ audio: true })
+    rawMicStream = await navigator.mediaDevices.getUserMedia({
+      audio: {
+        echoCancellation: true,
+        noiseSuppression: true,
+        autoGainControl: true,
+      },
+    })
   } catch (e) {
     console.warn('Offscreen mic access notice:', e)
   }
@@ -140,10 +146,11 @@ async function stopRecordingAndUpload() {
         }
 
         const mimeType = mediaRecorder?.mimeType || 'audio/webm'
+        const fileExt = mimeType.includes('webm') ? 'webm' : mimeType.includes('mp4') ? 'mp4' : 'wav'
         const audioBlob = new Blob(audioChunks, { type: mimeType })
 
         const formData = new FormData()
-        formData.append('file', audioBlob, 'extension_meeting.wav')
+        formData.append('file', audioBlob, `extension_meeting.${fileExt}`)
         formData.append('title', activeTitle)
         formData.append('description', 'Captured via MeetMind Chrome Extension')
         if (userId) {
@@ -163,19 +170,13 @@ async function stopRecordingAndUpload() {
         const meetingData = await res.json()
         const meetingId = meetingData.meeting_id || meetingData.id
 
-        if (meetingId) {
-          fetch(`http://localhost:8000/api/v1/meetings/${meetingId}/analyze`, {
-            method: 'POST',
-          }).catch((err) => console.warn('Background analysis trigger notice:', err))
-        }
-
         audioChunks = []
         mediaRecorder = null
 
         resolve({
           status: 'success',
           meeting_id: meetingId,
-          message: 'Meeting recorded and uploaded successfully.',
+          message: 'Meeting recorded and processing queued in background.',
         })
       } catch (err: any) {
         console.error('Offscreen upload error:', err)

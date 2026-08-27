@@ -20,17 +20,33 @@ export function App() {
   const [loadingSession, setLoadingSession] = useState<boolean>(true)
 
   useEffect(() => {
+    // Check URL parameters for direct meeting navigation (e.g. ?meetingId=uuid)
+    const params = new URLSearchParams(window.location.search)
+    const meetingIdFromUrl = params.get('meetingId') || params.get('meeting_id')
+    if (meetingIdFromUrl) {
+      setSelectedMeetingId(meetingIdFromUrl)
+    }
+
     // Initial session check
     supabase.auth.getSession().then(({ data: { session } }) => {
       const user = session?.user
       if (user && (user.email_confirmed_at || user.confirmed_at)) {
         setUserEmail(user.email || null)
         setIsAuthenticated(true)
+        if (meetingIdFromUrl) {
+          setCurrentView('detail')
+        } else {
+          setCurrentView('dashboard')
+        }
       } else {
         setUserEmail(null)
         setIsAuthenticated(false)
+        if (meetingIdFromUrl) {
+          setCurrentView('auth')
+        } else {
+          setCurrentView('landing')
+        }
       }
-      setCurrentView('landing')
       setLoadingSession(false)
     })
 
@@ -55,13 +71,18 @@ export function App() {
     await supabase.auth.signOut()
     setUserEmail(null)
     setIsAuthenticated(false)
+    setSelectedMeetingId(null)
     setCurrentView('landing')
   }
 
   const handleAuthSuccess = (email: string) => {
     setUserEmail(email)
     setIsAuthenticated(true)
-    setCurrentView('dashboard')
+    if (selectedMeetingId) {
+      setCurrentView('detail')
+    } else {
+      setCurrentView('dashboard')
+    }
   }
 
   if (loadingSession) {

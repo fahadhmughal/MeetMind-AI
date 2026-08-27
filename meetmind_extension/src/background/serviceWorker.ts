@@ -5,6 +5,7 @@ export interface RecordingState {
   startTime: number | null
   status: 'idle' | 'recording' | 'uploading' | 'completed' | 'error'
   errorMessage?: string
+  meetingId?: string
 }
 
 let state: RecordingState = {
@@ -147,11 +148,13 @@ export function handleMessage(
           await ensureOffscreenDocument()
           const res = await sendToOffscreenWithRetry({ type: 'STOP_RECORDING_OFFSCREEN' })
           if (res?.status === 'success') {
+            const meetingId = res.meeting_id || res.id
             updateState({
               isRecording: false,
               status: 'completed',
+              meetingId: meetingId,
             })
-            sendResponse({ status: 'success', state, ...res })
+            sendResponse({ status: 'success', state, ...res, meeting_id: meetingId })
           } else {
             updateState({
               isRecording: false,
@@ -174,6 +177,7 @@ export function handleMessage(
         status: 'idle',
         errorMessage: undefined,
         startTime: null,
+        meetingId: undefined,
       })
       sendResponse({ status: 'success', state })
       break

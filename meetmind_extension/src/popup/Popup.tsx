@@ -15,12 +15,15 @@ import {
   RotateCcw,
 } from 'lucide-react'
 
+import { CONFIG } from '../config'
+
 export function Popup() {
   const [isRecording, setIsRecording] = useState(false)
   const [meetingTitle, setMeetingTitle] = useState('Google Meet Sync')
   const [status, setStatus] = useState<'idle' | 'recording' | 'uploading' | 'completed' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [timerSeconds, setTimerSeconds] = useState(0)
+  const [completedMeetingId, setCompletedMeetingId] = useState<string | null>(null)
 
   // Hydrate persistent recording state on mount and preserve state across tab switches
   useEffect(() => {
@@ -30,6 +33,7 @@ export function Popup() {
       setStatus(resState.status || 'idle')
       if (resState.meetingTitle) setMeetingTitle(resState.meetingTitle)
       if (resState.errorMessage) setErrorMessage(resState.errorMessage)
+      if (resState.meetingId) setCompletedMeetingId(resState.meetingId)
 
       if (resState.isRecording && resState.startTime) {
         const elapsed = Math.max(0, Math.floor((Date.now() - resState.startTime) / 1000))
@@ -74,10 +78,17 @@ export function Popup() {
   const handleStartRecording = async () => {
     setErrorMessage(null)
     setTimerSeconds(0)
+    setCompletedMeetingId(null)
 
     try {
       if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true }).catch(() => null)
+        const stream = await navigator.mediaDevices.getUserMedia({
+          audio: {
+            echoCancellation: true,
+            noiseSuppression: true,
+            autoGainControl: true,
+          },
+        }).catch(() => null)
         if (stream) {
           stream.getTracks().forEach((t) => t.stop())
         }
@@ -110,6 +121,7 @@ export function Popup() {
         (res) => {
           if (res?.status === 'success') {
             setStatus('completed')
+            if (res.meeting_id) setCompletedMeetingId(res.meeting_id)
           } else {
             setStatus('error')
             setErrorMessage(res?.message || 'Failed to finish offscreen recording.')
@@ -126,14 +138,17 @@ export function Popup() {
     setStatus('idle')
     setErrorMessage(null)
     setTimerSeconds(0)
+    setCompletedMeetingId(null)
 
     if (typeof chrome !== 'undefined' && chrome.runtime?.sendMessage) {
       chrome.runtime.sendMessage({ type: 'RESET_STATUS' })
     }
   }
 
-  const handleOpenWebApp = () => {
-    const webAppUrl = 'http://localhost:5173'
+  const handleOpenWebApp = (targetMeetingId?: string | null) => {
+    const targetId = typeof targetMeetingId === 'string' ? targetMeetingId : completedMeetingId
+    const baseUrl = CONFIG.WEB_APP_URL || 'http://localhost:5175'
+    const webAppUrl = targetId ? `${baseUrl}/?meetingId=${targetId}` : baseUrl
     if (typeof chrome !== 'undefined' && chrome.tabs?.create) {
       chrome.tabs.create({ url: webAppUrl })
     } else {

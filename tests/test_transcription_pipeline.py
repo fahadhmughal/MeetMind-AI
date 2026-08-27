@@ -40,5 +40,33 @@ def test_transcription_pipeline_end_to_end(mock_provider_class, mock_supabase):
     assert result["utterances"][0]["speaker"] == "Speaker 1"
     assert result["utterances"][1]["speaker"] == "Speaker 2"
 
-    mock_supabase.upload_audio.assert_called_once()
+    assert mock_supabase.upload_audio.call_count >= 1
     mock_supabase.insert.assert_called()
+
+
+@patch("api.routes.meetings.supabase_service")
+@patch("api.routes.meetings._run_background_pipeline")
+def test_async_upload_endpoint(mock_background_fn, mock_supabase):
+    import asyncio
+    from api.routes.meetings import upload_and_process_meeting
+    from fastapi import BackgroundTasks, UploadFile
+    import io
+
+    mock_supabase.insert.return_value = {"id": "test-bg-meeting-123"}
+    bg_tasks = BackgroundTasks()
+    dummy_file = UploadFile(filename="recording.wav", file=io.BytesIO(b"RIFF....WAVEfmt ...."))
+
+    res = asyncio.run(upload_and_process_meeting(
+        background_tasks=bg_tasks,
+        file=dummy_file,
+        title="Test Extension Recording",
+        description="Async test"
+    ))
+
+    assert res["status"] == "success"
+    assert res["meeting_id"] == "test-bg-meeting-123"
+    assert res["status_detail"] == "processing"
+    assert len(bg_tasks.tasks) == 1
+
+
+

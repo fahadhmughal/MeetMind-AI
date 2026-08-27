@@ -1,11 +1,13 @@
 """Unit tests for RAG Chat grounding, exact refusal message, scope filtering, and error handling."""
 
 import pytest
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch
 from pipeline.rag_pipeline import RAGPipeline, EXACT_REFUSAL_MESSAGE, ChatAnswer
 
 
-def test_rag_chat_grounded_answer():
+@patch("key_manager.key_manager.execute_with_retry")
+def test_rag_chat_grounded_answer(mock_execute):
+    mock_execute.side_effect = lambda fn, **kwargs: fn("fake_key", "gemini")
     mock_retriever = MagicMock()
     mock_retriever.search.return_value = [
         {"content": "Speaker A: The deployment is scheduled for Friday at 5 PM.", "rrf_score": 0.03}
@@ -82,7 +84,9 @@ def test_rag_chat_empty_query_raises_error():
         pipeline.answer_query(meeting_id="m123", query="   ")
 
 
-def test_rag_chat_json_string_unwrapping():
+@patch("key_manager.key_manager.execute_with_retry")
+def test_rag_chat_json_string_unwrapping(mock_execute):
+    mock_execute.side_effect = lambda fn, **kwargs: fn("fake_key", "gemini")
     mock_retriever = MagicMock()
     mock_retriever.search.return_value = [
         {"content": "Speaker A: We decided to deploy on Friday.", "rrf_score": 0.03}

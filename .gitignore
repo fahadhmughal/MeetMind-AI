@@ -1,56 +1,106 @@
-# Python Virtual Environments
+# Environment & Secrets (NEVER COMMIT API KEYS OR SECRETS)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*
+*.env
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Documents & Presentation Files
+*.docx
+*.doc
+*.pdf
+*.pptx
+*.ppt
+*.xlsx
+*.xls
+~$*.doc*
+~$*.ppt*
+~$*.xls*
+documentation/
+
+# Python Virtual Environments & Packages
 venv/
 .venv/
 env/
 ENV/
+*.egg-info/
+.eggs/
 
-# Python Bytecode & Caches
+# Python Bytecode & Test Caches
 __pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
 
 # Vector DB Data & SQLite Databases (DO NOT COMMIT DATABASE DUMPS)
 MeetMind_Backend/vectordb/data/
 vectordb/data/
 *.sqlite3
 *.sqlite3-journal
+*.sqlite
+*.db
 *.bin
+*.chroma
 
 # Audio Files & Recordings
 MeetMind_Backend/audio/*
 audio/*
 !.gitkeep
+*.wav
+*.mp3
+*.m4a
+*.ogg
+*.flac
+*.webm
 
 # Application Logs
 logs/
 MeetMind_Backend/logs/
 *.log
-
-# Environment & Secrets (NEVER COMMIT API KEYS OR SECRETS)
-.env
-.env.local
-.env.*
-*.env
-!.env.example
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
 # Node Modules & Build Artifacts
 node_modules/
 dist/
 dist-ssr/
 build/
+.output/
+.turbo/
+.tsbuildinfo
 meetmind_web/node_modules/
 meetmind_web/dist/
 meetmind_extension/node_modules/
 meetmind_extension/dist/
 
-# IDE & OS Files
+# IDE, Editor & OS Files
 .vscode/
 .idea/
 .DS_Store
+.DS_Store?
+._*
 Thumbs.db
+ehthumbs.db
+Desktop.ini
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*.tmp
+*.temp
+*~
+

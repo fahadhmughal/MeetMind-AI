@@ -40,6 +40,66 @@ class AudioProcessor:
         logger.info(f"Audio file '{file_name}' ({len(file_bytes)} bytes) validated successfully.")
 
     @staticmethod
+    def denoise_audio(file_bytes: bytes, file_name: str) -> bytes:
+        """Applies conservative ffmpeg audio denoising (afftdn + highpass filter).
+
+        If ffmpeg is missing or fails for any reason, logs warning and falls back to original bytes.
+        """
+        import subprocess
+        import tempfile
+        import shutil
+
+        if not shutil.which("ffmpeg"):
+            logger.info("FFmpeg executable not found on system PATH. Skipping denoising pass.")
+            return file_bytes
+
+        ext = os.path.splitext(file_name)[1].lower() or ".wav"
+        temp_in = None
+        temp_out = None
+        try:
+            with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as in_file:
+                in_file.write(file_bytes)
+                temp_in = in_file.name
+
+            out_fd, temp_out = tempfile.mkstemp(suffix=ext)
+            os.close(out_fd)
+
+            cmd = [
+                "ffmpeg",
+                "-y",
+                "-i", temp_in,
+                "-af", "highpass=f=80,afftdn",
+                temp_out
+            ]
+
+            logger.info(f"Running ffmpeg denoising pass on '{file_name}'...")
+            res = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=30.0)
+
+            if res.returncode == 0 and os.path.exists(temp_out) and os.path.getsize(temp_out) > 0:
+                with open(temp_out, "rb") as out_file:
+                    denoised_bytes = out_file.read()
+                logger.info(f"FFmpeg denoising completed successfully for '{file_name}'. Output size: {len(denoised_bytes)} bytes.")
+                return denoised_bytes
+            else:
+                stderr_output = res.stderr.decode("utf-8", errors="ignore") if res.stderr else "Unknown error"
+                logger.warning(f"FFmpeg denoising returned non-zero code {res.returncode}: {stderr_output}. Falling back to original audio.")
+                return file_bytes
+        except Exception as exc:
+            logger.warning(f"FFmpeg denoising failed for '{file_name}': {exc}. Falling back to original audio.")
+            return file_bytes
+        finally:
+            if temp_in and os.path.exists(temp_in):
+                try:
+                    os.remove(temp_in)
+                except Exception:
+                    pass
+            if temp_out and os.path.exists(temp_out):
+                try:
+                    os.remove(temp_out)
+                except Exception:
+                    pass
+
+    @staticmethod
     def stitch_transcripts(
         chunks_utterances: List[List[Utterance]],
         chunk_durations: List[float]
