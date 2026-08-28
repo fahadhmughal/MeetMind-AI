@@ -6,8 +6,8 @@ from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
-# Default lightweight high-performance local embedding model
-DEFAULT_EMBEDDING_MODEL: str = "all-MiniLM-L6-v2"
+# Default lightweight high-performance local embedding model (optimized for cloud/Render deployment)
+DEFAULT_EMBEDDING_MODEL: str = "paraphrase-MiniLM-L3-v2"
 
 
 class EmbeddingManager:
